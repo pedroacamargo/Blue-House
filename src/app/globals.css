@@ -47,12 +47,23 @@ body {
 .intro-logo {
   opacity: 0;
   transform: scale(0.975);
+  -webkit-mask-image: radial-gradient(
+    circle,
+    #000 0%,
+    #000 66%,
+    transparent 72%
+  );
+  mask-image: radial-gradient(circle, #000 0%, #000 66%, transparent 72%);
   animation: reveal-logo 850ms cubic-bezier(0.22, 1, 0.36, 1) 1.65s forwards;
 }
 
 .intro-mark {
   transform: translate(-50%, -50%);
   animation: dock-logo 1.25s cubic-bezier(0.22, 1, 0.36, 1) 2.55s forwards;
+}
+
+.docked-logo {
+  top: max(4.5rem, calc(50% - 9rem));
 }
 
 .landing-intro {
@@ -98,11 +109,11 @@ body {
   }
 
   100% {
-    left: 2rem;
-    top: calc(100% - 2rem);
-    width: 6.5rem;
-    height: 6.5rem;
-    transform: translate(0, -100%);
+    left: 50%;
+    top: max(4.5rem, calc(50% - 9rem));
+    width: 9rem;
+    height: 9rem;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -131,11 +142,11 @@ body {
     }
 
     100% {
-      left: 1.5rem;
-      top: calc(100% - 1.5rem);
-      width: 6rem;
-      height: 6rem;
-      transform: translate(0, -100%);
+      left: 50%;
+      top: max(4.5rem, calc(50% - 9rem));
+      width: 8rem;
+      height: 8rem;
+      transform: translate(-50%, -50%);
     }
   }
 }

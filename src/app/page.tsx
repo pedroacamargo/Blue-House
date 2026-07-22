@@ -9,10 +9,10 @@ export default function Home() {
       <Image
         src="/brand/logo-reference.jpg"
         alt="Blue House Exquisite Properties"
-        width={104}
-        height={104}
+        width={144}
+        height={144}
         priority
-        className="fixed bottom-6 left-6 h-24 w-24 object-cover sm:bottom-8 sm:left-8 sm:h-[6.5rem] sm:w-[6.5rem]"
+        className="docked-logo fixed left-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 object-cover sm:h-36 sm:w-36"
       />
 
       <section className="landing-copy absolute left-1/2 top-1/2 w-full max-w-2xl px-6 text-center">
