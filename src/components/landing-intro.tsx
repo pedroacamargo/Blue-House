@@ -5,33 +5,49 @@ import { useEffect, useState } from "react";
 
 export function LandingIntro() {
   const [isVisible, setIsVisible] = useState(true);
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const timer = window.setTimeout(
+    const startDelay = reducedMotion ? 60 : 320;
+    const animationDuration = reducedMotion ? 180 : 3400;
+
+    document.body.classList.add("intro-is-running");
+
+    const startTimer = window.setTimeout(
+      () => setIsRunning(true),
+      startDelay,
+    );
+    const finishTimer = window.setTimeout(
       () => setIsVisible(false),
-      reducedMotion ? 250 : 4300,
+      startDelay + animationDuration,
     );
 
-    return () => window.clearTimeout(timer);
+    return () => {
+      window.clearTimeout(startTimer);
+      window.clearTimeout(finishTimer);
+      document.body.classList.remove("intro-is-running");
+    };
   }, []);
+
+  useEffect(() => {
+    if (!isVisible) {
+      document.body.classList.remove("intro-is-running");
+    }
+  }, [isVisible]);
 
   if (!isVisible) return null;
 
   return (
     <div
-      className="landing-intro fixed inset-0 z-50 grid place-items-center bg-blue-house-500"
+      className={`landing-intro${isRunning ? " is-running" : ""}`}
       role="status"
       aria-label="A carregar o website da Blue House"
     >
-      <div className="intro-mark fixed left-1/2 top-1/2 h-72 w-72 sm:h-96 sm:w-96">
-        <svg
-          className="absolute inset-0 h-full w-full"
-          viewBox="0 0 500 500"
-          aria-hidden="true"
-        >
+      <div className="intro-mark">
+        <svg viewBox="0 0 500 500" aria-hidden="true">
           <path
             className="logo-arc logo-arc-top"
             d="M 212 103 C 294 81, 374 131, 396 213"
@@ -47,11 +63,16 @@ export function LandingIntro() {
         <Image
           src="/brand/logo-reference.jpg"
           alt=""
-          fill
-          priority
-          sizes="(min-width: 640px) 384px, 288px"
-          className="intro-logo object-cover"
+          width={500}
+          height={500}
+          loading="eager"
+          sizes="(min-width: 640px) 360px, 270px"
+          className="intro-logo"
         />
+      </div>
+
+      <div className="intro-progress" aria-hidden="true">
+        <span />
       </div>
       <span className="sr-only">A carregar…</span>
     </div>
