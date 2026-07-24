@@ -1,0 +1,106 @@
+[
+  {
+    "id": "casa-atlantica",
+    "name": "Casa Atlântica",
+    "location": "Guincho",
+    "region": "Cascais",
+    "typology": "T4",
+    "status": "Disponível",
+    "image": "/properties/casa-atlantica.webp",
+    "imageAlt": "Moradia contemporânea em pedra clara com piscina e vista sobre o Atlântico",
+    "description": "Uma casa desenhada em torno da luz e do horizonte. A pedra natural, os pátios protegidos e a relação contínua entre interior e exterior criam uma vivência serena junto ao mar.",
+    "highlights": [
+      "Vista de mar",
+      "Piscina",
+      "Arquitetura contemporânea"
+    ],
+    "specifications": [
+      { "label": "Área interior", "value": "342 m²" },
+      { "label": "Terreno", "value": "1 280 m²" },
+      { "label": "Quartos", "value": "4 suítes" },
+      { "label": "Casas de banho", "value": "5" },
+      { "label": "Estacionamento", "value": "3 lugares" },
+      { "label": "Exterior", "value": "Piscina & jardim" },
+      { "label": "Orientação", "value": "Poente" },
+      { "label": "Eficiência", "value": "Classe A" }
+    ]
+  },
+  {
+    "id": "apartamento-lapa",
+    "name": "Apartamento da Lapa",
+    "location": "Lapa",
+    "region": "Lisboa",
+    "typology": "T3",
+    "status": "Disponível",
+    "image": "/properties/apartamento-lapa.webp",
+    "imageAlt": "Sala de apartamento clássico em Lisboa com tetos trabalhados e grandes janelas",
+    "description": "Uma recuperação sensível preserva os tetos ornamentados, a escala generosa e a luz de um apartamento lisboeta do final do século XIX, introduzindo conforto contemporâneo com discrição.",
+    "highlights": [
+      "Edifício histórico",
+      "Varanda",
+      "Renovação integral"
+    ],
+    "specifications": [
+      { "label": "Área interior", "value": "218 m²" },
+      { "label": "Piso", "value": "3.º com elevador" },
+      { "label": "Quartos", "value": "3 suítes" },
+      { "label": "Casas de banho", "value": "4" },
+      { "label": "Tetos", "value": "3,6 m" },
+      { "label": "Exterior", "value": "2 varandas" },
+      { "label": "Estacionamento", "value": "1 lugar" },
+      { "label": "Eficiência", "value": "Classe B" }
+    ]
+  },
+  {
+    "id": "refugio-comporta",
+    "name": "Refúgio da Comporta",
+    "location": "Brejos da Carregueira",
+    "region": "Comporta",
+    "typology": "T5",
+    "status": "Disponível",
+    "image": "/properties/refugio-comporta.webp",
+    "imageAlt": "Casa contemporânea em madeira entre pinheiros com piscina na Comporta",
+    "description": "Volumes baixos, madeira envelhecida e areia dão forma a um refúgio descontraído entre pinheiros. Os espaços sociais abrem por inteiro para um pátio reservado e para a piscina.",
+    "highlights": [
+      "Pinhal privado",
+      "Piscina",
+      "A poucos minutos da praia"
+    ],
+    "specifications": [
+      { "label": "Área interior", "value": "286 m²" },
+      { "label": "Terreno", "value": "2 140 m²" },
+      { "label": "Quartos", "value": "5 suítes" },
+      { "label": "Casas de banho", "value": "6" },
+      { "label": "Casas", "value": "3 volumes" },
+      { "label": "Exterior", "value": "Piscina & pátio" },
+      { "label": "Distância praia", "value": "8 min" },
+      { "label": "Eficiência", "value": "Classe A+" }
+    ]
+  },
+  {
+    "id": "quinta-sintra",
+    "name": "Quinta de Sintra",
+    "location": "São Pedro de Penaferrim",
+    "region": "Sintra",
+    "typology": "T6",
+    "status": "Disponível",
+    "image": "/properties/quinta-sintra.webp",
+    "imageAlt": "Quinta histórica recuperada entre jardins luxuriantes nas colinas de Sintra",
+    "description": "Uma quinta romântica reencontrada entre árvores centenárias. A casa principal restaurada convive com um pavilhão contemporâneo, unindo memória, paisagem e uma nova forma de habitar.",
+    "highlights": [
+      "Jardim histórico",
+      "Casa de hóspedes",
+      "Projeto de autor"
+    ],
+    "specifications": [
+      { "label": "Área interior", "value": "524 m²" },
+      { "label": "Terreno", "value": "8 600 m²" },
+      { "label": "Quartos", "value": "6 suítes" },
+      { "label": "Casas de banho", "value": "8" },
+      { "label": "Edifícios", "value": "3" },
+      { "label": "Exterior", "value": "Jardim & tanque" },
+      { "label": "Património", "value": "Séc. XIX" },
+      { "label": "Estacionamento", "value": "6 lugares" }
+    ]
+  }
+]

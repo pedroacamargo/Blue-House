@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 
@@ -12,12 +14,16 @@ const sections = [
 ];
 
 export function ScrollSidebar() {
+  const pathname = usePathname();
+  const isGallery = pathname.startsWith("/gallery");
   const [activeSection, setActiveSection] = useState("inicio");
   const [dotTop, setDotTop] = useState<number | null>(null);
   const navigationRef = useRef<HTMLElement>(null);
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   useEffect(() => {
+    if (isGallery) return;
+
     let animationFrame = 0;
 
     const updateActiveSection = () => {
@@ -63,10 +69,12 @@ export function ScrollSidebar() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [isGallery]);
+
+  const activeNavigationItem = isGallery ? "gallery" : activeSection;
 
   useEffect(() => {
-    const activeLink = linkRefs.current[activeSection];
+    const activeLink = linkRefs.current[activeNavigationItem];
     const navigation = navigationRef.current;
 
     if (!activeLink || !navigation) return;
@@ -81,13 +89,15 @@ export function ScrollSidebar() {
     resizeObserver.observe(navigation);
 
     return () => resizeObserver.disconnect();
-  }, [activeSection]);
+  }, [activeNavigationItem]);
 
-  const activeIndex = sections.findIndex(({ id }) => id === activeSection);
+  const activeIndex = isGallery
+    ? 0
+    : sections.findIndex(({ id }) => id === activeSection) + 1;
   const navigationStyle = {
     "--dot-top":
       dotTop === null
-        ? `${1.125 + Math.max(activeIndex, 0) * 2.8}rem`
+        ? `${1.9 + Math.max(activeIndex, 0) * 2.8}rem`
         : `${dotTop}px`,
   } as CSSProperties;
 
@@ -103,22 +113,49 @@ export function ScrollSidebar() {
       >
         <span className="sidebar-active-dot" aria-hidden="true" />
 
+        <Link
+          ref={(link) => {
+            linkRefs.current.gallery = link;
+          }}
+          href="/gallery"
+          className={`sidebar-gallery-link${isGallery ? " is-active" : ""}`}
+          aria-current={isGallery ? "page" : undefined}
+        >
+          <span className="sidebar-gallery-copy">
+            <span>Propriedades</span>
+            <strong>Galeria</strong>
+          </span>
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M4 12 12 4M6 4h6v6" />
+          </svg>
+        </Link>
+
+        <span className="sidebar-gallery-divider" aria-hidden="true" />
+
         {sections.map((section) => (
-          <a
+          <Link
             ref={(link) => {
               linkRefs.current[section.id] = link;
             }}
             key={section.id}
-            href={`#${section.id}`}
+            href={isGallery ? `/#${section.id}` : `#${section.id}`}
             onClick={() => setActiveSection(section.id)}
-            className={activeSection === section.id ? "is-active" : undefined}
-            aria-current={activeSection === section.id ? "location" : undefined}
+            className={
+              !isGallery && activeSection === section.id
+                ? "is-active"
+                : undefined
+            }
+            aria-current={
+              !isGallery && activeSection === section.id
+                ? "location"
+                : undefined
+            }
           >
             <span className="sidebar-link-label">{section.label}</span>
             <span className="sidebar-link-number" aria-hidden="true">
               {section.number}
             </span>
-          </a>
+          </Link>
         ))}
       </nav>
     </aside>

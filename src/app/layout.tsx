@@ -22,6 +22,7 @@ export default function RootLayout({
     <html
       lang="pt-PT"
       className={`${geistSans.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full">{children}</body>
     </html>
