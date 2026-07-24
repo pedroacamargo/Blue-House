@@ -1,17 +1,21 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const sections = [
   { id: "inicio", number: "01", label: "Início" },
   { id: "essencia", number: "02", label: "Essência" },
   { id: "abordagem", number: "03", label: "Abordagem" },
-  { id: "contacto", number: "04", label: "Em breve" },
+  { id: "em-breve", number: "04", label: "Em breve" },
+  { id: "contacto", number: "05", label: "Contactos" },
 ];
 
 export function ScrollSidebar() {
   const [activeSection, setActiveSection] = useState("inicio");
+  const [dotTop, setDotTop] = useState<number | null>(null);
+  const navigationRef = useRef<HTMLElement>(null);
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
 
   useEffect(() => {
     let animationFrame = 0;
@@ -23,7 +27,19 @@ export function ScrollSidebar() {
       sections.forEach(({ id }) => {
         const section = document.getElementById(id);
 
-        if (section && section.getBoundingClientRect().top <= focusLine) {
+        if (!section) return;
+
+        const sectionBounds = section.getBoundingClientRect();
+
+        if (
+          sectionBounds.top <= focusLine &&
+          sectionBounds.bottom > focusLine
+        ) {
+          nextSection = id;
+          return;
+        }
+
+        if (sectionBounds.top <= focusLine) {
           nextSection = id;
         }
       });
@@ -49,9 +65,30 @@ export function ScrollSidebar() {
     };
   }, []);
 
+  useEffect(() => {
+    const activeLink = linkRefs.current[activeSection];
+    const navigation = navigationRef.current;
+
+    if (!activeLink || !navigation) return;
+
+    const updateDotPosition = () => {
+      setDotTop(activeLink.offsetTop + activeLink.offsetHeight / 2);
+    };
+
+    updateDotPosition();
+
+    const resizeObserver = new ResizeObserver(updateDotPosition);
+    resizeObserver.observe(navigation);
+
+    return () => resizeObserver.disconnect();
+  }, [activeSection]);
+
   const activeIndex = sections.findIndex(({ id }) => id === activeSection);
   const navigationStyle = {
-    "--dot-offset": `${Math.max(activeIndex, 0) * 2.8}rem`,
+    "--dot-top":
+      dotTop === null
+        ? `${1.125 + Math.max(activeIndex, 0) * 2.8}rem`
+        : `${dotTop}px`,
   } as CSSProperties;
 
   return (
@@ -59,13 +96,21 @@ export function ScrollSidebar() {
       className="scroll-sidebar"
       aria-label="Navegação da página"
     >
-      <nav className="sidebar-navigation" style={navigationStyle}>
+      <nav
+        ref={navigationRef}
+        className="sidebar-navigation"
+        style={navigationStyle}
+      >
         <span className="sidebar-active-dot" aria-hidden="true" />
 
         {sections.map((section) => (
           <a
+            ref={(link) => {
+              linkRefs.current[section.id] = link;
+            }}
             key={section.id}
             href={`#${section.id}`}
+            onClick={() => setActiveSection(section.id)}
             className={activeSection === section.id ? "is-active" : undefined}
             aria-current={activeSection === section.id ? "location" : undefined}
           >

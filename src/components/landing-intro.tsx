@@ -46,33 +46,35 @@ export function LandingIntro() {
       role="status"
       aria-label="A carregar o website da Blue House"
     >
-      <div className="intro-mark">
-        <svg viewBox="0 0 500 500" aria-hidden="true">
-          <path
-            className="logo-arc logo-arc-top"
-            d="M 212 103 C 294 81, 374 131, 396 213"
-            pathLength="1"
-          />
-          <path
-            className="logo-arc logo-arc-bottom"
-            d="M 102 287 C 127 369, 198 419, 288 399"
-            pathLength="1"
-          />
-        </svg>
+      <div className="intro-content">
+        <div className="intro-mark">
+          <svg viewBox="0 0 2000 2000" aria-hidden="true">
+            <path
+              className="logo-arc logo-arc-top"
+              d="M 843.4 415.6 A 605 605 0 0 1 1584.4 843.4"
+              pathLength="1"
+            />
+            <path
+              className="logo-arc logo-arc-bottom"
+              d="M 415.6 1156.6 A 605 605 0 0 0 1156.6 1584.4"
+              pathLength="1"
+            />
+          </svg>
 
-        <Image
-          src="/brand/logo-reference.jpg"
-          alt=""
-          width={500}
-          height={500}
-          loading="eager"
-          sizes="(min-width: 640px) 360px, 270px"
-          className="intro-logo"
-        />
-      </div>
+          <Image
+            src="/brand/Logo-Quality.png"
+            alt=""
+            width={2000}
+            height={2000}
+            loading="eager"
+            sizes="(min-width: 768px) 496px, 86vw"
+            className="intro-logo"
+          />
+        </div>
 
-      <div className="intro-progress" aria-hidden="true">
-        <span />
+        <div className="intro-progress" aria-hidden="true">
+          <span />
+        </div>
       </div>
       <span className="sr-only">A carregar…</span>
     </div>

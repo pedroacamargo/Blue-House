@@ -22,6 +22,35 @@ const principles = [
   },
 ];
 
+const contactChannels = [
+  {
+    number: "01",
+    label: "Telefone principal",
+    value: "+351 ··· ··· ···",
+    accessibleLabel: "Telefone principal, número a confirmar",
+  },
+  {
+    number: "02",
+    label: "Contacto direto",
+    value: "+351 ··· ··· ···",
+    accessibleLabel: "Contacto direto, número a confirmar",
+  },
+  {
+    number: "03",
+    label: "Contacto adicional",
+    value: "+351 ··· ··· ···",
+    accessibleLabel: "Contacto adicional, número a confirmar",
+  },
+  {
+    number: "04",
+    label: "Email da empresa",
+    value: "A confirmar",
+    accessibleLabel: "Email da empresa a confirmar",
+  },
+];
+
+const socialNetworks = ["Instagram", "Pinterest", "Facebook"];
+
 function BrandLines({ className = "" }: { className?: string }) {
   return (
     <svg
@@ -50,18 +79,14 @@ function SectionTransition({
       className={`section-transition ${className}${reverse ? " is-reversed" : ""}`}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 1440 150" preserveAspectRatio="none">
+      <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
         <path
           className="transition-surface"
-          d="M0 106C187 67 350 127 526 91C730 49 876 18 1082 61C1251 96 1352 60 1440 27V150H0Z"
+          d="M0 74L1440 110V140H0Z"
         />
         <path
-          className="transition-line transition-line-one"
-          d="M-20 87C179 45 350 109 525 72C727 29 885 5 1089 45C1255 78 1362 39 1460 7"
-        />
-        <path
-          className="transition-line transition-line-two"
-          d="M-20 117C177 79 350 139 529 103C733 62 875 31 1080 73C1247 107 1353 73 1460 36"
+          className="transition-line"
+          d="M0 58L1440 94"
         />
       </svg>
     </div>
@@ -95,10 +120,10 @@ export default function Home() {
         <div className="hero-inner">
           <a className="hero-brand" href="#inicio" aria-label="Blue House, início">
             <Image
-              src="/brand/logo-reference.jpg"
+              src="/brand/Logo-Quality.png"
               alt="Blue House Exquisite Properties"
-              width={500}
-              height={500}
+              width={2000}
+              height={2000}
               loading="eager"
               sizes="(min-width: 768px) 148px, 116px"
             />
@@ -170,10 +195,7 @@ export default function Home() {
           ))}
         </div>
 
-        <SectionTransition
-          className="transition-to-deep-blue"
-          reverse
-        />
+        <SectionTransition className="transition-to-deep-blue" reverse />
       </section>
 
       <section
@@ -209,7 +231,7 @@ export default function Home() {
             qualidade da luz, a relação com o lugar e a forma como um espaço
             pode ser vivido.
           </p>
-          <a className="text-link text-link-light" href="#contacto">
+          <a className="text-link text-link-light" href="#em-breve">
             <span>Continuar</span>
             <span className="link-line" aria-hidden="true" />
           </a>
@@ -219,7 +241,7 @@ export default function Home() {
       </section>
 
       <section
-        id="contacto"
+        id="em-breve"
         className="closing-section reveal-section"
         aria-labelledby="closing-title"
         data-reveal-section
@@ -251,11 +273,101 @@ export default function Home() {
           </div>
         </div>
 
-        <footer className="site-footer" data-reveal-group>
-          <span>Blue House Exquisite Properties</span>
-          <span>Lisboa, Portugal</span>
-        </footer>
+        <SectionTransition className="transition-to-footer" reverse />
       </section>
+
+      <footer
+        id="contacto"
+        className="site-footer reveal-section"
+        aria-labelledby="footer-title"
+        data-reveal-section
+      >
+        <BrandLines className="footer-lines" />
+
+        <div className="footer-inner">
+          <div className="footer-intro" data-reveal-group>
+            <div>
+              <p className="eyebrow">Contactos</p>
+              <h2 id="footer-title">
+                Comecemos
+                <span>uma conversa.</span>
+              </h2>
+            </div>
+            <p>
+              Três linhas telefónicas e um email para um acompanhamento
+              próximo, reservado e atento a cada detalhe.
+            </p>
+          </div>
+
+          <div
+            className="footer-contacts"
+            aria-label="Contactos da empresa"
+            data-reveal-group
+          >
+            {contactChannels.map((contact) => (
+              <div className="footer-contact" key={contact.number}>
+                <div className="footer-contact-heading">
+                  <span>{contact.label}</span>
+                  <span aria-hidden="true">{contact.number}</span>
+                </div>
+                <span
+                  className="footer-contact-value"
+                  aria-label={contact.accessibleLabel}
+                >
+                  {contact.value}
+                </span>
+                <span className="footer-contact-rule" aria-hidden="true" />
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="footer-socials"
+            role="group"
+            aria-labelledby="footer-socials-title"
+            data-reveal-group
+          >
+            <span
+              id="footer-socials-title"
+              className="footer-socials-label"
+            >
+              Acompanhe a Blue House
+            </span>
+            <div className="footer-social-links">
+              {socialNetworks.map((network) => (
+                <button
+                  className="footer-social-link"
+                  type="button"
+                  disabled
+                  aria-label={`${network}, ligação a confirmar`}
+                  key={network}
+                >
+                  <span>{network}</span>
+                  <span className="footer-social-arrow" aria-hidden="true">
+                    <svg viewBox="0 0 16 16">
+                      <path d="M4 12 12 4M6 4h6v6" />
+                    </svg>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="footer-bottom" data-reveal-group>
+            <div className="footer-signature">
+              <span className="footer-monogram" aria-hidden="true">
+                BH
+              </span>
+              <span>
+                Blue House
+                <small>Exquisite Properties</small>
+              </span>
+            </div>
+            <span>Lisboa · Portugal</span>
+            <span>Est. 2023</span>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
