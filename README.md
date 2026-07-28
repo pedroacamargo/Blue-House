@@ -22,6 +22,18 @@ npm run build
 npm run start
 ```
 
+## Produção e SEO
+
+Configure o URL público final antes do build para gerar URLs canónicos,
+`robots.txt`, dados estruturados e o sitemap com o domínio correto:
+
+```bash
+SITE_URL=https://www.seu-dominio.pt npm run build
+```
+
+No serviço de alojamento, defina `SITE_URL` como variável de ambiente de
+produção. Não use URLs de preview.
+
 ## Stack
 
 - Next.js 16, com App Router

@@ -4,11 +4,34 @@ import Link from "next/link";
 import { PropertyGallery, type Property } from "@/components/property-gallery";
 import { ScrollSidebar } from "@/components/scroll-sidebar";
 import propertiesData from "@/data/properties.json";
+import { getSiteUrl, siteConfig } from "@/lib/site-config";
+
+const siteUrl = getSiteUrl();
+const galleryTitle = "Galeria de Imóveis de Luxo";
+const galleryDescription =
+  "Explore a coleção privada de imóveis de luxo selecionados pela Blue House em Lisboa, Cascais, Sintra e Comporta.";
 
 export const metadata: Metadata = {
-  title: "Galeria de Imóveis | Blue House",
-  description:
-    "Uma coleção reservada de propriedades selecionadas pela Blue House.",
+  title: galleryTitle,
+  description: galleryDescription,
+  alternates: siteUrl
+    ? {
+        canonical: "/gallery",
+      }
+    : undefined,
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    siteName: siteConfig.name,
+    title: `${galleryTitle} | ${siteConfig.name}`,
+    description: galleryDescription,
+    url: siteUrl ? new URL("/gallery", siteUrl) : undefined,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${galleryTitle} | ${siteConfig.name}`,
+    description: galleryDescription,
+  },
 };
 
 export default function GalleryPage() {

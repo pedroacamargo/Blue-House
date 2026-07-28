@@ -108,7 +108,7 @@ export function ScrollSidebar() {
     >
       <nav
         ref={navigationRef}
-        className="sidebar-navigation"
+        className={`sidebar-navigation${isGallery ? " is-gallery-active" : ""}`}
         style={navigationStyle}
       >
         <span className="sidebar-active-dot" aria-hidden="true" />
@@ -122,11 +122,13 @@ export function ScrollSidebar() {
           aria-current={isGallery ? "page" : undefined}
         >
           <span className="sidebar-gallery-copy">
-            <span>Propriedades</span>
             <strong>Galeria</strong>
           </span>
-          <svg viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M4 12 12 4M6 4h6v6" />
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 17V5a2 2 0 0 1 2-2h12" />
+            <rect x="7" y="6" width="14" height="15" rx="2" />
+            <circle cx="16.5" cy="10.5" r="1.5" />
+            <path d="m8 18 4-4 2.5 2.5 2-2L20 18" />
           </svg>
         </Link>
 

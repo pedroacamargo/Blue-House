@@ -3,6 +3,9 @@ import heroImage from "../../public/brand/architectural-horizon.png";
 import { LandingIntro } from "@/components/landing-intro";
 import { SectionReveals } from "@/components/section-reveals";
 import { ScrollSidebar } from "@/components/scroll-sidebar";
+import { getSiteUrl, siteConfig } from "@/lib/site-config";
+
+const siteUrl = getSiteUrl();
 
 const principles = [
   {
@@ -94,8 +97,27 @@ function SectionTransition({
 }
 
 export default function Home() {
+  const websiteJsonLd = siteUrl
+    ? {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: siteConfig.name,
+        alternateName: siteConfig.legalName,
+        url: siteUrl.toString(),
+        inLanguage: siteConfig.language,
+      }
+    : undefined;
+
   return (
     <main className="site-shell">
+      {websiteJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       <LandingIntro />
       <SectionReveals />
       <ScrollSidebar />
@@ -125,7 +147,7 @@ export default function Home() {
               width={2000}
               height={2000}
               loading="eager"
-              sizes="(min-width: 768px) 148px, 116px"
+              sizes="(min-width: 1024px) 232px, (min-width: 768px) 208px, 176px"
             />
           </a>
 

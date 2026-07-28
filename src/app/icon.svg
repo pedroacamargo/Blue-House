@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <style>
+    .monogram { fill: #fff; }
+  </style>
+  <text
+    class="monogram"
+    x="256"
+    y="256"
+    dominant-baseline="central"
+    font-family="Palatino, Georgia, 'Times New Roman', serif"
+    font-size="300"
+    font-weight="700"
+    text-anchor="middle"
+  >BH</text>
+</svg>

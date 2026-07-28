@@ -67,7 +67,7 @@ export function LandingIntro() {
             width={2000}
             height={2000}
             loading="eager"
-            sizes="(min-width: 768px) 496px, 86vw"
+            sizes="(min-width: 768px) 608px, 92vw"
             className="intro-logo"
           />
         </div>
