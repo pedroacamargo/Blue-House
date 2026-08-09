@@ -15,13 +15,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl("/"),
       changeFrequency: "monthly",
       priority: 1,
-      images: [absoluteUrl("/brand/architectural-horizon.png")],
+      images: [
+        absoluteUrl(
+          "/properties/casa-azoia/hero-architecture-desktop.webp",
+        ),
+      ],
     },
     {
       url: absoluteUrl("/gallery"),
       changeFrequency: "weekly",
       priority: 0.9,
-      images: propertiesData.map(({ image }) => absoluteUrl(image)),
+      images: propertiesData.flatMap(({ images }) =>
+        images.map(({ src }) => absoluteUrl(src)),
+      ),
     },
   ];
 }

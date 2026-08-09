@@ -71,10 +71,6 @@ export function LandingIntro() {
             className="intro-logo"
           />
         </div>
-
-        <div className="intro-progress" aria-hidden="true">
-          <span />
-        </div>
       </div>
       <span className="sr-only">A carregar…</span>
     </div>

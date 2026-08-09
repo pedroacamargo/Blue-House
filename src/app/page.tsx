@@ -1,5 +1,7 @@
-import Image from "next/image";
-import heroImage from "../../public/brand/architectural-horizon.png";
+import Image, { getImageProps } from "next/image";
+import approachImage from "../../public/properties/casa-azoia/sala-escada.webp";
+import heroDesktopImage from "../../public/properties/casa-azoia/hero-architecture-desktop.webp";
+import heroMobileImage from "../../public/properties/casa-azoia/hero-architecture-mobile.webp";
 import { LandingIntro } from "@/components/landing-intro";
 import { SectionReveals } from "@/components/section-reveals";
 import { ScrollSidebar } from "@/components/scroll-sidebar";
@@ -9,17 +11,14 @@ const siteUrl = getSiteUrl();
 
 const principles = [
   {
-    number: "01",
     title: "Olhar de arquitetura",
     copy: "Cada espaço é lido para além da sua forma — contexto, proporção e potencial fazem parte da mesma decisão.",
   },
   {
-    number: "02",
     title: "Curadoria criteriosa",
     copy: "Um portefólio intencionalmente pequeno, onde a relevância de cada propriedade vale mais do que o volume.",
   },
   {
-    number: "03",
     title: "Proximidade discreta",
     copy: "Uma relação atenta, pessoal e reservada, construída ao ritmo de quem procura ou confia um lugar singular.",
   },
@@ -54,22 +53,6 @@ const contactChannels = [
 
 const socialNetworks = ["Instagram", "Pinterest", "Facebook"];
 
-function BrandLines({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 640 640"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path d="M154 112C327 42 510 139 555 317" pathLength="1" />
-      <path d="M73 355C109 532 296 626 466 556" pathLength="1" />
-      <path d="M105 176C250 94 454 141 539 287" pathLength="1" />
-      <path d="M96 415C176 557 344 603 499 518" pathLength="1" />
-    </svg>
-  );
-}
-
 function SectionTransition({
   className,
   reverse = false,
@@ -87,12 +70,39 @@ function SectionTransition({
           className="transition-surface"
           d="M0 74L1440 110V140H0Z"
         />
-        <path
-          className="transition-line"
-          d="M0 58L1440 94"
-        />
       </svg>
     </div>
+  );
+}
+
+function HeroPicture() {
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({
+    src: heroDesktopImage,
+    alt: "",
+    fill: true,
+    sizes: "100vw",
+    quality: 90,
+  });
+
+  return (
+    <picture className="hero-picture">
+      <source
+        media="(min-width: 64rem)"
+        srcSet={desktopSrcSet}
+        sizes="100vw"
+      />
+      <Image
+        src={heroMobileImage}
+        alt=""
+        fill
+        fetchPriority="high"
+        sizes="100vw"
+        quality={90}
+        className="hero-image"
+      />
+    </picture>
   );
 }
 
@@ -124,21 +134,10 @@ export default function Home() {
 
       <section id="inicio" className="hero-section" aria-labelledby="hero-title">
         <div className="hero-media" aria-hidden="true">
-          <Image
-            src={heroImage}
-            alt=""
-            fill
-            preload
-            placeholder="blur"
-            sizes="100vw"
-            className="hero-image"
-          />
+          <HeroPicture />
         </div>
         <div className="hero-wash" aria-hidden="true" />
         <div className="hero-grain" aria-hidden="true" />
-        <BrandLines className="hero-lines" />
-        <BrandLines className="hero-copy-lines" />
-
         <div className="hero-inner">
           <a className="hero-brand" href="#inicio" aria-label="Blue House, início">
             <Image
@@ -182,7 +181,6 @@ export default function Home() {
         aria-labelledby="essence-title"
         data-reveal-section
       >
-        <BrandLines className="essence-lines" />
         <span className="section-monogram essence-monogram" aria-hidden="true">
           BH
         </span>
@@ -206,9 +204,8 @@ export default function Home() {
 
         <div className="principles-grid" data-reveal-group>
           {principles.map((principle) => (
-            <article className="principle" key={principle.number}>
-              <div className="principle-heading">
-                <span>{principle.number}</span>
+            <article className="principle" key={principle.title}>
+              <div className="principle-heading" aria-hidden="true">
                 <span className="principle-rule" aria-hidden="true" />
               </div>
               <h3>{principle.title}</h3>
@@ -226,19 +223,18 @@ export default function Home() {
         aria-labelledby="approach-title"
         data-reveal-section
       >
-        <BrandLines className="approach-lines" />
-
         <div className="approach-image-wrap" data-reveal-group>
           <Image
-            src={heroImage}
-            alt="Arquitetura contemporânea em pedra clara aberta sobre o horizonte"
+            src={approachImage}
+            alt="Sala da Casa Azoia com escada artesanal em madeira"
             fill
             placeholder="blur"
             sizes="(min-width: 900px) 58vw, 100vw"
+            quality={85}
             className="approach-image"
           />
           <div className="approach-image-shade" aria-hidden="true" />
-          <span className="image-caption">Matéria · Luz · Horizonte</span>
+          <span className="image-caption">Madeira · Luz · Matéria</span>
         </div>
 
         <div className="approach-copy" data-reveal-group>
@@ -253,7 +249,7 @@ export default function Home() {
             qualidade da luz, a relação com o lugar e a forma como um espaço
             pode ser vivido.
           </p>
-          <a className="text-link text-link-light" href="#em-breve">
+          <a className="text-link text-link-light" href="#casa-azoia">
             <span>Continuar</span>
             <span className="link-line" aria-hidden="true" />
           </a>
@@ -263,12 +259,11 @@ export default function Home() {
       </section>
 
       <section
-        id="em-breve"
+        id="casa-azoia"
         className="closing-section reveal-section"
         aria-labelledby="closing-title"
         data-reveal-section
       >
-        <BrandLines className="closing-lines" />
         <span className="section-monogram closing-monogram" aria-hidden="true">
           BH
         </span>
@@ -277,22 +272,26 @@ export default function Home() {
         </div>
 
         <div className="closing-content" data-reveal-group>
-          <p className="eyebrow eyebrow-dark">Blue House · Lisboa</p>
+          <p className="eyebrow eyebrow-dark">Disponível · Azoia, Sintra</p>
           <h2 id="closing-title">
-            A nossa casa digital
+            Uma casa entre a serra
             <span>
-              está a ganhar <em>forma.</em>
+              e o <em>Atlântico.</em>
             </span>
           </h2>
           <p>
-            Em breve, novos espaços, histórias e formas de habitar para
-            descobrir.
+            Conheça a Casa Azoia, os seus interiores acolhedores, os terraços
+            banhados pela luz do poente e a paisagem que a envolve.
           </p>
           <div className="closing-note">
-            <span>Exquisite Properties</span>
+            <span>Casa Azoia</span>
             <span className="closing-rule" aria-hidden="true" />
-            <span>Est. 2023</span>
+            <span>Disponível</span>
           </div>
+          <a className="text-link" href="/gallery">
+            <span>Ver a propriedade</span>
+            <span className="link-line" aria-hidden="true" />
+          </a>
         </div>
 
         <SectionTransition className="transition-to-footer" reverse />
@@ -304,8 +303,6 @@ export default function Home() {
         aria-labelledby="footer-title"
         data-reveal-section
       >
-        <BrandLines className="footer-lines" />
-
         <div className="footer-inner">
           <div className="footer-intro" data-reveal-group>
             <div>

@@ -1,106 +1,74 @@
 [
   {
-    "id": "casa-atlantica",
-    "name": "Casa Atlântica",
-    "location": "Guincho",
-    "region": "Cascais",
-    "typology": "T4",
-    "status": "Disponível",
-    "image": "/properties/casa-atlantica.webp",
-    "imageAlt": "Moradia contemporânea em pedra clara com piscina e vista sobre o Atlântico",
-    "description": "Uma casa desenhada em torno da luz e do horizonte. A pedra natural, os pátios protegidos e a relação contínua entre interior e exterior criam uma vivência serena junto ao mar.",
-    "highlights": [
-      "Vista de mar",
-      "Piscina",
-      "Arquitetura contemporânea"
-    ],
-    "specifications": [
-      { "label": "Área interior", "value": "342 m²" },
-      { "label": "Terreno", "value": "1 280 m²" },
-      { "label": "Quartos", "value": "4 suítes" },
-      { "label": "Casas de banho", "value": "5" },
-      { "label": "Estacionamento", "value": "3 lugares" },
-      { "label": "Exterior", "value": "Piscina & jardim" },
-      { "label": "Orientação", "value": "Poente" },
-      { "label": "Eficiência", "value": "Classe A" }
-    ]
-  },
-  {
-    "id": "apartamento-lapa",
-    "name": "Apartamento da Lapa",
-    "location": "Lapa",
-    "region": "Lisboa",
-    "typology": "T3",
-    "status": "Disponível",
-    "image": "/properties/apartamento-lapa.webp",
-    "imageAlt": "Sala de apartamento clássico em Lisboa com tetos trabalhados e grandes janelas",
-    "description": "Uma recuperação sensível preserva os tetos ornamentados, a escala generosa e a luz de um apartamento lisboeta do final do século XIX, introduzindo conforto contemporâneo com discrição.",
-    "highlights": [
-      "Edifício histórico",
-      "Varanda",
-      "Renovação integral"
-    ],
-    "specifications": [
-      { "label": "Área interior", "value": "218 m²" },
-      { "label": "Piso", "value": "3.º com elevador" },
-      { "label": "Quartos", "value": "3 suítes" },
-      { "label": "Casas de banho", "value": "4" },
-      { "label": "Tetos", "value": "3,6 m" },
-      { "label": "Exterior", "value": "2 varandas" },
-      { "label": "Estacionamento", "value": "1 lugar" },
-      { "label": "Eficiência", "value": "Classe B" }
-    ]
-  },
-  {
-    "id": "refugio-comporta",
-    "name": "Refúgio da Comporta",
-    "location": "Brejos da Carregueira",
-    "region": "Comporta",
-    "typology": "T5",
-    "status": "Disponível",
-    "image": "/properties/refugio-comporta.webp",
-    "imageAlt": "Casa contemporânea em madeira entre pinheiros com piscina na Comporta",
-    "description": "Volumes baixos, madeira envelhecida e areia dão forma a um refúgio descontraído entre pinheiros. Os espaços sociais abrem por inteiro para um pátio reservado e para a piscina.",
-    "highlights": [
-      "Pinhal privado",
-      "Piscina",
-      "A poucos minutos da praia"
-    ],
-    "specifications": [
-      { "label": "Área interior", "value": "286 m²" },
-      { "label": "Terreno", "value": "2 140 m²" },
-      { "label": "Quartos", "value": "5 suítes" },
-      { "label": "Casas de banho", "value": "6" },
-      { "label": "Casas", "value": "3 volumes" },
-      { "label": "Exterior", "value": "Piscina & pátio" },
-      { "label": "Distância praia", "value": "8 min" },
-      { "label": "Eficiência", "value": "Classe A+" }
-    ]
-  },
-  {
-    "id": "quinta-sintra",
-    "name": "Quinta de Sintra",
-    "location": "São Pedro de Penaferrim",
+    "id": "casa-azoia",
+    "name": "Casa Azoia",
+    "location": "Azoia",
     "region": "Sintra",
-    "typology": "T6",
+    "typology": "Moradia",
     "status": "Disponível",
-    "image": "/properties/quinta-sintra.webp",
-    "imageAlt": "Quinta histórica recuperada entre jardins luxuriantes nas colinas de Sintra",
-    "description": "Uma quinta romântica reencontrada entre árvores centenárias. A casa principal restaurada convive com um pavilhão contemporâneo, unindo memória, paisagem e uma nova forma de habitar.",
+    "image": "/properties/casa-azoia/fachada-entardecer.webp",
+    "imageAlt": "Fachada da Casa Azoia ao entardecer, entre a serra e o Atlântico",
+    "images": [
+      {
+        "src": "/properties/casa-azoia/fachada-entardecer.webp",
+        "alt": "Fachada principal da Casa Azoia ao entardecer"
+      },
+      {
+        "src": "/properties/casa-azoia/fachada-paisagem.webp",
+        "alt": "Casa Azoia vista a partir da paisagem envolvente"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-escada.webp",
+        "alt": "Sala da Casa Azoia com escada artesanal e vigas em madeira"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-panoramica.webp",
+        "alt": "Vista ampla da sala, zona de refeições e cozinha da Casa Azoia"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-lareira-ampla.webp",
+        "alt": "Sala da Casa Azoia com lareira, teto de madeira e luz natural"
+      },
+      {
+        "src": "/properties/casa-azoia/escada-detalhe.webp",
+        "alt": "Detalhe da escada artesanal em madeira da Casa Azoia"
+      },
+      {
+        "src": "/properties/casa-azoia/cozinha.webp",
+        "alt": "Cozinha branca da Casa Azoia com zona de refeições"
+      },
+      {
+        "src": "/properties/casa-azoia/quarto-terraco.webp",
+        "alt": "Quarto luminoso da Casa Azoia com acesso ao terraço"
+      },
+      {
+        "src": "/properties/casa-azoia/casa-de-banho-azul.webp",
+        "alt": "Casa de banho da Casa Azoia com revestimento azul profundo"
+      },
+      {
+        "src": "/properties/casa-azoia/terraco-diurno.webp",
+        "alt": "Terraço da Casa Azoia aberto sobre a envolvente da aldeia"
+      },
+      {
+        "src": "/properties/casa-azoia/detalhe-luz.webp",
+        "alt": "Luz dourada e sombras geométricas no exterior da Casa Azoia"
+      },
+      {
+        "src": "/properties/casa-azoia/costa-atlantica.webp",
+        "alt": "Vista aérea da costa atlântica próxima da Azoia"
+      }
+    ],
+    "description": "Entre a serra e o Atlântico, a Casa Azoia combina a escala acolhedora da arquitetura local com interiores luminosos, terraços e uma relação próxima com a paisagem.",
     "highlights": [
-      "Jardim histórico",
-      "Casa de hóspedes",
-      "Projeto de autor"
+      "Envolvente atlântica",
+      "Terraço",
+      "Ambiente de aldeia"
     ],
     "specifications": [
-      { "label": "Área interior", "value": "524 m²" },
-      { "label": "Terreno", "value": "8 600 m²" },
-      { "label": "Quartos", "value": "6 suítes" },
-      { "label": "Casas de banho", "value": "8" },
-      { "label": "Edifícios", "value": "3" },
-      { "label": "Exterior", "value": "Jardim & tanque" },
-      { "label": "Património", "value": "Séc. XIX" },
-      { "label": "Estacionamento", "value": "6 lugares" }
+      { "label": "Localização", "value": "Azoia" },
+      { "label": "Concelho", "value": "Sintra" },
+      { "label": "Tipo", "value": "Moradia" },
+      { "label": "Disponibilidade", "value": "Sob consulta" }
     ]
   }
 ]
