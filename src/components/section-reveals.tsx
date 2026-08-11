@@ -15,33 +15,44 @@ export function SectionReveals() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    root.classList.add("reveal-enabled");
-
-    if (reducedMotion) {
+    const revealAll = () => {
       sections.forEach((section) => section.classList.add("is-visible"));
       groups.forEach((group) => group.classList.add("is-revealed"));
+    };
 
-      return () => root.classList.remove("reveal-enabled");
+    if (reducedMotion || !("IntersectionObserver" in window)) {
+      revealAll();
+
+      return;
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+    let observer: IntersectionObserver;
 
-          entry.target.classList.add(
-            entry.target.hasAttribute("data-reveal-section")
-              ? "is-visible"
-              : "is-revealed",
-          );
-          observer.unobserve(entry.target);
-        });
-      },
-      {
-        rootMargin: "0px 0px -12% 0px",
-        threshold: 0.14,
-      },
-    );
+    try {
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add(
+              entry.target.hasAttribute("data-reveal-section")
+                ? "is-visible"
+                : "is-revealed",
+            );
+            observer.unobserve(entry.target);
+          });
+        },
+        {
+          rootMargin: "0px 0px -12% 0px",
+          threshold: 0.14,
+        },
+      );
+    } catch {
+      revealAll();
+      return;
+    }
+
+    root.classList.add("reveal-enabled");
 
     sections.forEach((section) => observer.observe(section));
     groups.forEach((group) => observer.observe(group));

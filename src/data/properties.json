@@ -70,5 +70,77 @@
       { "label": "Tipo", "value": "Moradia" },
       { "label": "Disponibilidade", "value": "Sob consulta" }
     ]
+  },
+  {
+    "id": "terreno-caldas-da-rainha",
+    "name": "Terreno nas Caldas",
+    "location": "Caldas da Rainha",
+    "region": "Leiria",
+    "typology": "Terreno com ruína",
+    "status": "Disponível",
+    "image": "/properties/terreno-caldas-da-rainha/vista-aerea-envolvente.webp",
+    "imageAlt": "Vista aérea do terreno com ruína e da paisagem rural nas Caldas da Rainha",
+    "images": [
+      {
+        "src": "/properties/terreno-caldas-da-rainha/vista-aerea-envolvente.webp",
+        "alt": "Vista aérea do terreno e da paisagem envolvente nas Caldas da Rainha"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/ruina-e-acesso.webp",
+        "alt": "Ruína existente vista a partir do acesso ao terreno"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/fachada-na-vegetacao.webp",
+        "alt": "Fachada da construção existente envolvida pela vegetação"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/interior-cobertura.webp",
+        "alt": "Interior amplo da ruína com estrutura de cobertura em madeira"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/estrutura-interior.webp",
+        "alt": "Estrutura interior e cobertura da construção existente"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/implantacao-e-arvores.webp",
+        "alt": "Construção existente implantada entre árvores maduras"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/janela-da-ruina.webp",
+        "alt": "Janela antiga da ruína coberta por vegetação"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/terreno-e-paisagem.webp",
+        "alt": "Área aberta do terreno com vista sobre a paisagem rural"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/paisagem-rural.webp",
+        "alt": "Paisagem rural e povoamento disperso na envolvente"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/vista-aerea-do-terreno.webp",
+        "alt": "Vista aérea aproximada da construção e do terreno"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/implantacao-aerea.webp",
+        "alt": "Vista vertical da implantação, árvores e terrenos vizinhos"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/arvores-no-terreno.webp",
+        "alt": "Árvores maduras e vegetação no interior da propriedade"
+      }
+    ],
+    "description": "Nas Caldas da Rainha, um terreno de caráter rural com construções em ruína, árvores maduras e uma relação aberta com a paisagem. Uma oportunidade para desenvolver um novo projeto, sujeito à análise e às aprovações urbanísticas aplicáveis.",
+    "highlights": [
+      "Ruína existente",
+      "Árvores maduras",
+      "Potencial de projeto"
+    ],
+    "specifications": [
+      { "label": "Localização", "value": "Caldas da Rainha" },
+      { "label": "Distrito", "value": "Leiria" },
+      { "label": "Tipo", "value": "Terreno com ruína" },
+      { "label": "Viabilidade", "value": "Sob consulta" }
+    ]
   }
 ]

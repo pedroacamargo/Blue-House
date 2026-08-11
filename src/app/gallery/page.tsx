@@ -7,9 +7,9 @@ import propertiesData from "@/data/properties.json";
 import { getSiteUrl, siteConfig } from "@/lib/site-config";
 
 const siteUrl = getSiteUrl();
-const galleryTitle = "Casa Azoia";
+const galleryTitle = "Propriedades selecionadas";
 const galleryDescription =
-  "Conheça a Casa Azoia, uma moradia selecionada pela Blue House entre a serra de Sintra e o Atlântico.";
+  "Conheça as propriedades selecionadas pela Blue House em Portugal.";
 
 export const metadata: Metadata = {
   title: galleryTitle,
@@ -56,17 +56,21 @@ export default function GalleryPage() {
         </Link>
 
         <div className="gallery-heading">
-          <span>Disponível agora</span>
-          <h1>Casa Azoia</h1>
+          <span>Disponíveis agora</span>
+          <h1>Propriedades</h1>
         </div>
       </header>
 
       <div
         className="gallery-count"
-        aria-label={`${properties.length} propriedade disponível`}
+        aria-label={`${properties.length} ${properties.length === 1 ? "propriedade disponível" : "propriedades disponíveis"}`}
       >
         <span>{String(properties.length).padStart(2, "0")}</span>
-        <span>propriedade disponível</span>
+        <span>
+          {properties.length === 1
+            ? "propriedade disponível"
+            : "propriedades disponíveis"}
+        </span>
       </div>
 
       <PropertyGallery properties={properties} />

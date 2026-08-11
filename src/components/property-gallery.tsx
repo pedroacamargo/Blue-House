@@ -32,11 +32,21 @@ type PropertyGalleryProps = {
 export function PropertyGallery({ properties }: PropertyGalleryProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [isDetailTransparent, setIsDetailTransparent] = useState(false);
+  const [isDetailHidden, setIsDetailHidden] = useState(false);
   const activeProperty = useMemo(
     () => properties.find((property) => property.id === activeId) ?? null,
     [activeId, properties],
   );
+
+  useEffect(() => {
+    document.documentElement.classList.toggle(
+      "gallery-property-open",
+      Boolean(activeProperty),
+    );
+
+    return () =>
+      document.documentElement.classList.remove("gallery-property-open");
+  }, [activeProperty]);
 
   useEffect(() => {
     if (!activeProperty) return;
@@ -45,10 +55,11 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
       if (event.key === "Escape") {
         setActiveId(null);
         setActiveImageIndex(0);
-        setIsDetailTransparent(false);
+        setIsDetailHidden(false);
       }
 
       if (event.key === "ArrowLeft") {
+        setIsDetailHidden(true);
         setActiveImageIndex((currentIndex) =>
           (currentIndex - 1 + activeProperty.images.length) %
           activeProperty.images.length,
@@ -56,6 +67,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
       }
 
       if (event.key === "ArrowRight") {
+        setIsDetailHidden(true);
         setActiveImageIndex(
           (currentIndex) =>
             (currentIndex + 1) % activeProperty.images.length,
@@ -68,6 +80,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
   }, [activeProperty]);
 
   const galleryStyle = {
+    "--gallery-items": properties.length,
     "--gallery-columns": properties.length === 1 ? 1 : 2,
     "--gallery-rows": Math.max(Math.ceil(properties.length / 2), 1),
     "--inactive-count": Math.max(properties.length - 1, 1),
@@ -111,7 +124,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                   if (!isSelected) {
                     setActiveId(property.id);
                     setActiveImageIndex(0);
-                    setIsDetailTransparent(false);
+                    setIsDetailHidden(false);
                   }
                 }}
                 aria-expanded={isSelected}
@@ -164,7 +177,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                     onClick={() => {
                       setActiveId(null);
                       setActiveImageIndex(0);
-                      setIsDetailTransparent(false);
+                      setIsDetailHidden(false);
                     }}
                     aria-label={`Fechar detalhes de ${property.name}`}
                   >
@@ -174,69 +187,66 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                     </svg>
                   </button>
 
-                  <section
-                    className={`property-detail${
-                      isDetailTransparent ? " is-transparent" : ""
+                  <div
+                    className={`property-detail-drawer${
+                      isDetailHidden ? " is-hidden" : ""
                     }`}
-                    id={`property-detail-${property.id}`}
-                    aria-label={`Informações de ${property.name}`}
-                    aria-live="polite"
                   >
                     <button
-                      className="property-detail-visibility-toggle"
+                      className="property-detail-drawer-toggle"
                       type="button"
-                      onClick={() =>
-                        setIsDetailTransparent(
-                          (isTransparent) => !isTransparent,
-                        )
-                      }
+                      onClick={() => setIsDetailHidden((isHidden) => !isHidden)}
                       aria-label={
-                        isDetailTransparent
-                          ? "Aumentar o fundo para melhorar a leitura"
-                          : "Tornar o fundo transparente para ver a fotografia"
+                        isDetailHidden
+                          ? "Mostrar informações da propriedade"
+                          : "Esconder informações da propriedade"
                       }
-                      aria-pressed={isDetailTransparent}
+                      aria-expanded={!isDetailHidden}
+                      aria-controls={`property-detail-${property.id}`}
                     >
                       <svg viewBox="0 0 20 20" aria-hidden="true">
-                        <path d="M2.5 10s2.8-4.5 7.5-4.5 7.5 4.5 7.5 4.5-2.8 4.5-7.5 4.5S2.5 10 2.5 10Z" />
-                        <circle cx="10" cy="10" r="2.1" />
+                        <path d="m12.5 4.5-5 5.5 5 5.5" />
                       </svg>
-                      <span>
-                        {isDetailTransparent
-                          ? "Melhorar leitura"
-                          : "Ver fotografia"}
-                      </span>
                     </button>
 
-                    <div className="property-detail-intro">
-                      <div className="property-detail-heading">
-                        <span>
-                          {property.status} · {property.typology}
-                        </span>
-                        <h2>{property.name}</h2>
-                      </div>
-                      <p className="property-detail-description">
-                        {property.description}
-                      </p>
-                      <ul className="property-highlights" aria-label="Destaques">
-                        {property.highlights.map((highlight) => (
-                          <li key={highlight}>{highlight}</li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <dl className="property-specifications">
-                      {property.specifications.map((specification) => (
-                        <div
-                          className="property-spec"
-                          key={specification.label}
-                        >
-                          <dt>{specification.label}</dt>
-                          <dd>{specification.value}</dd>
+                    <section
+                      className="property-detail"
+                      id={`property-detail-${property.id}`}
+                      aria-label={`Informações de ${property.name}`}
+                      aria-hidden={isDetailHidden}
+                      aria-live="polite"
+                      inert={isDetailHidden}
+                    >
+                      <div className="property-detail-intro">
+                        <div className="property-detail-heading">
+                          <span>
+                            {property.status} · {property.typology}
+                          </span>
+                          <h2>{property.name}</h2>
                         </div>
-                      ))}
-                    </dl>
-                  </section>
+                        <p className="property-detail-description">
+                          {property.description}
+                        </p>
+                        <ul className="property-highlights" aria-label="Destaques">
+                          {property.highlights.map((highlight) => (
+                            <li key={highlight}>{highlight}</li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <dl className="property-specifications">
+                        {property.specifications.map((specification) => (
+                          <div
+                            className="property-spec"
+                            key={specification.label}
+                          >
+                            <dt>{specification.label}</dt>
+                            <dd>{specification.value}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </section>
+                  </div>
 
                   <div
                     className="property-photo-navigation"
@@ -254,7 +264,12 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                         <button
                           className="property-photo-thumbnail"
                           type="button"
-                          onClick={() => setActiveImageIndex(photoIndex)}
+                          onClick={() => {
+                            if (photoIndex !== activeImageIndex) {
+                              setActiveImageIndex(photoIndex);
+                              setIsDetailHidden(true);
+                            }
+                          }}
                           aria-label={`Mostrar fotografia ${photoIndex + 1} de ${property.images.length}`}
                           aria-pressed={photoIndex === activeImageIndex}
                           key={photo.src}
@@ -277,12 +292,13 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                     <button
                       className="property-photo-step"
                       type="button"
-                      onClick={() =>
+                      onClick={() => {
                         setActiveImageIndex(
                           (activeImageIndex - 1 + property.images.length) %
                             property.images.length,
-                        )
-                      }
+                        );
+                        setIsDetailHidden(true);
+                      }}
                       aria-label="Fotografia anterior"
                     >
                       <svg viewBox="0 0 20 20" aria-hidden="true">
@@ -292,11 +308,12 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                     <button
                       className="property-photo-step"
                       type="button"
-                      onClick={() =>
+                      onClick={() => {
                         setActiveImageIndex(
                           (activeImageIndex + 1) % property.images.length,
-                        )
-                      }
+                        );
+                        setIsDetailHidden(true);
+                      }}
                       aria-label="Fotografia seguinte"
                     >
                       <svg viewBox="0 0 20 20" aria-hidden="true">
