@@ -51,7 +51,14 @@ const contactChannels = [
   },
 ];
 
-const socialNetworks = ["Instagram", "Pinterest", "Facebook"];
+const socialNetworks = [
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/thebluehouse.pt/",
+  },
+  { name: "Pinterest" },
+  { name: "Facebook" },
+];
 
 function SectionTransition({
   className,
@@ -353,22 +360,41 @@ export default function Home() {
               Acompanhe a Blue House
             </span>
             <div className="footer-social-links">
-              {socialNetworks.map((network) => (
-                <button
-                  className="footer-social-link"
-                  type="button"
-                  disabled
-                  aria-label={`${network}, ligação a confirmar`}
-                  key={network}
-                >
-                  <span>{network}</span>
-                  <span className="footer-social-arrow" aria-hidden="true">
-                    <svg viewBox="0 0 16 16">
-                      <path d="M4 12 12 4M6 4h6v6" />
-                    </svg>
-                  </span>
-                </button>
-              ))}
+              {socialNetworks.map((network) => {
+                const content = (
+                  <>
+                    <span>{network.name}</span>
+                    <span className="footer-social-arrow" aria-hidden="true">
+                      <svg viewBox="0 0 16 16">
+                        <path d="M4 12 12 4M6 4h6v6" />
+                      </svg>
+                    </span>
+                  </>
+                );
+
+                return network.href ? (
+                  <a
+                    className="footer-social-link"
+                    href={network.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${network.name} da Blue House (abre num novo separador)`}
+                    key={network.name}
+                  >
+                    {content}
+                  </a>
+                ) : (
+                  <button
+                    className="footer-social-link"
+                    type="button"
+                    disabled
+                    aria-label={`${network.name}, ligação a confirmar`}
+                    key={network.name}
+                  >
+                    {content}
+                  </button>
+                );
+              })}
             </div>
           </div>
 

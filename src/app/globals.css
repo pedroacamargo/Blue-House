@@ -2823,6 +2823,12 @@ a {
     display: none;
   }
 
+  .property-detail-description {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
   .property-detail-drawer.is-hidden {
     transform: translateY(100%);
   }
