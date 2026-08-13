@@ -33,10 +33,10 @@ const principles = [
 const contactChannels = [
   {
     number: "01",
-    label: "Telefone fixo",
+    label: "Rede fixa nacional",
     value: "+351 219 231 385",
     href: "tel:+351219231385",
-    accessibleLabel: "Ligar para o telefone fixo +351 219 231 385",
+    accessibleLabel: "Ligar para a rede fixa nacional +351 219 231 385",
   },
   {
     number: "02",
