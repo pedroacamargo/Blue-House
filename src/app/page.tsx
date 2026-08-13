@@ -33,27 +33,24 @@ const principles = [
 const contactChannels = [
   {
     number: "01",
-    label: "Telefone principal",
-    value: "+351 ··· ··· ···",
-    accessibleLabel: "Telefone principal, número a confirmar",
+    label: "Telefone fixo",
+    value: "+351 219 231 385",
+    href: "tel:+351219231385",
+    accessibleLabel: "Ligar para o telefone fixo +351 219 231 385",
   },
   {
     number: "02",
-    label: "Contacto direto",
-    value: "+351 ··· ··· ···",
-    accessibleLabel: "Contacto direto, número a confirmar",
+    label: "Telemóvel",
+    value: "+351 960 169 569",
+    href: "tel:+351960169569",
+    accessibleLabel: "Ligar para o telemóvel +351 960 169 569",
   },
   {
     number: "03",
-    label: "Contacto adicional",
-    value: "+351 ··· ··· ···",
-    accessibleLabel: "Contacto adicional, número a confirmar",
-  },
-  {
-    number: "04",
-    label: "Email da empresa",
-    value: "A confirmar",
-    accessibleLabel: "Email da empresa a confirmar",
+    label: "Email",
+    value: "geral@thebluehouse.pt",
+    href: "mailto:geral@thebluehouse.pt",
+    accessibleLabel: "Enviar email para geral@thebluehouse.pt",
   },
 ];
 
@@ -62,8 +59,6 @@ const socialNetworks = [
     name: "Instagram",
     href: "https://www.instagram.com/thebluehouse.pt/",
   },
-  { name: "Pinterest" },
-  { name: "Facebook" },
 ];
 
 function SectionTransition({
@@ -332,7 +327,7 @@ export default function Home() {
               </h2>
             </div>
             <p>
-              Três linhas telefónicas e um email para um acompanhamento
+              Duas linhas telefónicas e um email para um acompanhamento
               próximo, reservado e atento a cada detalhe.
             </p>
           </div>
@@ -348,12 +343,22 @@ export default function Home() {
                   <span>{contact.label}</span>
                   <span aria-hidden="true">{contact.number}</span>
                 </div>
-                <span
-                  className="footer-contact-value"
-                  aria-label={contact.accessibleLabel}
-                >
-                  {contact.value}
-                </span>
+                {contact.href ? (
+                  <a
+                    className="footer-contact-value"
+                    href={contact.href}
+                    aria-label={contact.accessibleLabel}
+                  >
+                    {contact.value}
+                  </a>
+                ) : (
+                  <span
+                    className="footer-contact-value"
+                    aria-label={contact.accessibleLabel}
+                  >
+                    {contact.value}
+                  </span>
+                )}
                 <span className="footer-contact-rule" aria-hidden="true" />
               </div>
             ))}
@@ -372,56 +377,31 @@ export default function Home() {
               Acompanhe a Blue House
             </span>
             <div className="footer-social-links">
-              {socialNetworks.map((network) => {
-                const content = (
-                  <>
+              {socialNetworks.map((network) => (
+                <a
+                  className="footer-social-link"
+                  href={network.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${network.name} da Blue House (abre num novo separador)`}
+                  key={network.name}
+                >
                     <span>{network.name}</span>
                     <span className="footer-social-arrow" aria-hidden="true">
                       <svg viewBox="0 0 16 16">
                         <path d="M4 12 12 4M6 4h6v6" />
                       </svg>
                     </span>
-                  </>
-                );
-
-                return network.href ? (
-                  <a
-                    className="footer-social-link"
-                    href={network.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${network.name} da Blue House (abre num novo separador)`}
-                    key={network.name}
-                  >
-                    {content}
-                  </a>
-                ) : (
-                  <button
-                    className="footer-social-link"
-                    type="button"
-                    disabled
-                    aria-label={`${network.name}, ligação a confirmar`}
-                    key={network.name}
-                  >
-                    {content}
-                  </button>
-                );
-              })}
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="footer-bottom" data-reveal-group>
-            <div className="footer-signature">
-              <span className="footer-monogram" aria-hidden="true">
-                BH
-              </span>
-              <span>
-                Blue House
-                <small>Exquisite Properties</small>
-              </span>
+          <div className="footer-bottom">
+            <div className="footer-license">
+              <span>Licença AMI — Warrior Destiny Lda</span>
+              <span>AMI — 24716</span>
             </div>
-            <span>Lisboa · Portugal</span>
-            <span>Est. 2023</span>
           </div>
         </div>
       </footer>

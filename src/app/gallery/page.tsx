@@ -51,7 +51,7 @@ export default function GalleryPage() {
             width={2000}
             height={2000}
             preload
-            sizes="(min-width: 768px) 160px, 120px"
+            unoptimized
           />
         </Link>
 
