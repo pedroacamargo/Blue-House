@@ -5,9 +5,15 @@ import heroMobileImage from "../../public/properties/casa-azoia/hero-architectur
 import { LandingIntro } from "@/components/landing-intro";
 import { SectionReveals } from "@/components/section-reveals";
 import { ScrollSidebar } from "@/components/scroll-sidebar";
+import propertiesData from "@/data/properties.json";
 import { getSiteUrl, siteConfig } from "@/lib/site-config";
 
 const siteUrl = getSiteUrl();
+const availablePropertiesCount = propertiesData.length;
+const availablePropertiesLabel =
+  availablePropertiesCount === 1
+    ? "propriedade disponível"
+    : "propriedades disponíveis";
 
 const principles = [
   {
@@ -256,7 +262,7 @@ export default function Home() {
             qualidade da luz, a relação com o lugar e a forma como um espaço
             pode ser vivido.
           </p>
-          <a className="text-link text-link-light" href="#casa-azoia">
+          <a className="text-link text-link-light" href="#propriedades">
             <span>Continuar</span>
             <span className="link-line" aria-hidden="true" />
           </a>
@@ -266,7 +272,7 @@ export default function Home() {
       </section>
 
       <section
-        id="casa-azoia"
+        id="propriedades"
         className="closing-section reveal-section"
         aria-labelledby="closing-title"
         data-reveal-section
@@ -279,24 +285,30 @@ export default function Home() {
         </div>
 
         <div className="closing-content" data-reveal-group>
-          <p className="eyebrow eyebrow-dark">Disponível · Azoia, Sintra</p>
+          <p className="eyebrow eyebrow-dark">
+            {String(availablePropertiesCount).padStart(2, "0")} ·{" "}
+            {availablePropertiesLabel}
+          </p>
           <h2 id="closing-title">
-            Uma casa entre a serra
+            Lugares escolhidos
             <span>
-              e o <em>Atlântico.</em>
+              com <em>intenção.</em>
             </span>
           </h2>
           <p>
-            Conheça a Casa Azoia, os seus interiores acolhedores, os terraços
-            banhados pela luz do poente e a paisagem que a envolve.
+            Explore uma seleção cuidada de propriedades singulares, escolhidas
+            pela sua arquitetura, contexto e potencial.
           </p>
           <div className="closing-note">
-            <span>Casa Azoia</span>
+            <span>Propriedades</span>
             <span className="closing-rule" aria-hidden="true" />
-            <span>Disponível</span>
+            <span>
+              {String(availablePropertiesCount).padStart(2, "0")} ·{" "}
+              {availablePropertiesLabel}
+            </span>
           </div>
           <a className="text-link" href="/gallery">
-            <span>Ver a propriedade</span>
+            <span>Ver propriedades</span>
             <span className="link-line" aria-hidden="true" />
           </a>
         </div>

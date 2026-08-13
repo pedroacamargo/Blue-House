@@ -1785,7 +1785,7 @@ a {
 
 .gallery-brand {
   display: block;
-  width: 5.35rem;
+  width: 7.5rem;
   pointer-events: auto;
 }
 
@@ -1817,7 +1817,7 @@ a {
 }
 
 .gallery-heading h1 {
-  margin: 0.1rem 0 0;
+  margin: 0;
   font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
   font-size: 1.25rem;
   font-weight: 400;
@@ -2038,6 +2038,10 @@ a {
   animation: gallery-thumbnail-in 480ms cubic-bezier(0.22, 1, 0.36, 1)
     both;
   box-shadow: 0 0.65rem 2rem rgba(12, 16, 27, 0.24);
+}
+
+.property-gallery.is-expanded .property-card:not(.is-selected) {
+  display: none;
 }
 
 .property-gallery.is-expanded .property-card.is-selected {
@@ -2385,15 +2389,13 @@ a {
 }
 
 .property-detail-description {
-  display: -webkit-box;
+  display: block;
   margin: 0.72rem 0 0;
-  overflow: hidden;
+  overflow: visible;
   color: rgba(19, 26, 43, 0.7);
   font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
   font-size: 0.76rem;
   line-height: 1.42;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
 }
 
 .property-highlights {
@@ -2525,7 +2527,7 @@ a {
   }
 
   .gallery-brand {
-    width: 7.1rem;
+    width: 10rem;
   }
 
   .gallery-heading {
@@ -2538,7 +2540,7 @@ a {
   }
 
   .gallery-heading h1 {
-    margin-top: 0.18rem;
+    margin-top: 0;
     font-size: 1.55rem;
   }
 
@@ -2726,7 +2728,6 @@ a {
   .property-detail-description {
     margin-top: 0.65rem;
     font-size: 0.79rem;
-    -webkit-line-clamp: 3;
   }
 
   .property-highlights {
@@ -2819,16 +2820,6 @@ a {
     grid-template-rows: repeat(var(--gallery-items), minmax(0, 1fr));
   }
 
-  .property-gallery.is-expanded .property-card:not(.is-selected) {
-    display: none;
-  }
-
-  .property-detail-description {
-    display: block;
-    overflow: visible;
-    -webkit-line-clamp: unset;
-  }
-
   .property-detail-drawer.is-hidden {
     transform: translateY(100%);
   }
@@ -2857,7 +2848,7 @@ a {
 
 @media (max-height: 36rem) and (max-width: 47.999rem) {
   .gallery-brand {
-    width: 4.2rem;
+    width: 5.2rem;
   }
 
   .gallery-heading h1 {

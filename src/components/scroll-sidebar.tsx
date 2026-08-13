@@ -9,7 +9,7 @@ const sections = [
   { id: "inicio", number: "01", label: "Início" },
   { id: "essencia", number: "02", label: "Essência" },
   { id: "abordagem", number: "03", label: "Abordagem" },
-  { id: "casa-azoia", number: "04", label: "Casa Azoia" },
+  { id: "propriedades", number: "04", label: "Propriedades" },
   { id: "contacto", number: "05", label: "Contactos" },
 ];
 

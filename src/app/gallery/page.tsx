@@ -51,12 +51,11 @@ export default function GalleryPage() {
             width={2000}
             height={2000}
             preload
-            sizes="(min-width: 768px) 116px, 86px"
+            sizes="(min-width: 768px) 160px, 120px"
           />
         </Link>
 
         <div className="gallery-heading">
-          <span>Disponíveis agora</span>
           <h1>Propriedades</h1>
         </div>
       </header>
