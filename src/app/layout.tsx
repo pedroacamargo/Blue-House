@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
+import { getSiteUrl, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -7,15 +8,53 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: "Blue House | Exquisite Properties",
-  description:
-    "O novo website da Blue House Exquisite Properties está em construção.",
+  metadataBase: siteUrl,
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  applicationName: siteConfig.legalName,
+  creator: siteConfig.legalName,
+  publisher: siteConfig.legalName,
+  category: "Imobiliário",
+  alternates: siteUrl
+    ? {
+        canonical: "/",
+      }
+    : undefined,
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteUrl,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#30416c",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -25,10 +64,11 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="pt"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="pt-PT"
+      className={`${geistSans.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }

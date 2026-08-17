@@ -1,0 +1,146 @@
+[
+  {
+    "id": "casa-azoia",
+    "name": "Casa Azoia",
+    "location": "Azoia",
+    "region": "Sintra",
+    "typology": "Moradia",
+    "status": "Disponível",
+    "image": "/properties/casa-azoia/fachada-entardecer.webp",
+    "imageAlt": "Fachada da Casa Azoia ao entardecer, entre a serra e o Atlântico",
+    "images": [
+      {
+        "src": "/properties/casa-azoia/fachada-entardecer.webp",
+        "alt": "Fachada principal da Casa Azoia ao entardecer"
+      },
+      {
+        "src": "/properties/casa-azoia/fachada-paisagem.webp",
+        "alt": "Casa Azoia vista a partir da paisagem envolvente"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-escada.webp",
+        "alt": "Sala da Casa Azoia com escada artesanal e vigas em madeira"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-panoramica.webp",
+        "alt": "Vista ampla da sala, zona de refeições e cozinha da Casa Azoia"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-lareira-ampla.webp",
+        "alt": "Sala da Casa Azoia com lareira, teto de madeira e luz natural"
+      },
+      {
+        "src": "/properties/casa-azoia/escada-detalhe.webp",
+        "alt": "Detalhe da escada artesanal em madeira da Casa Azoia"
+      },
+      {
+        "src": "/properties/casa-azoia/cozinha.webp",
+        "alt": "Cozinha branca da Casa Azoia com zona de refeições"
+      },
+      {
+        "src": "/properties/casa-azoia/quarto-terraco.webp",
+        "alt": "Quarto luminoso da Casa Azoia com acesso ao terraço"
+      },
+      {
+        "src": "/properties/casa-azoia/casa-de-banho-azul.webp",
+        "alt": "Casa de banho da Casa Azoia com revestimento azul profundo"
+      },
+      {
+        "src": "/properties/casa-azoia/terraco-diurno.webp",
+        "alt": "Terraço da Casa Azoia aberto sobre a envolvente da aldeia"
+      },
+      {
+        "src": "/properties/casa-azoia/detalhe-luz.webp",
+        "alt": "Luz dourada e sombras geométricas no exterior da Casa Azoia"
+      },
+      {
+        "src": "/properties/casa-azoia/costa-atlantica.webp",
+        "alt": "Vista aérea da costa atlântica próxima da Azoia"
+      }
+    ],
+    "description": "Entre a serra e o Atlântico, a Casa Azoia combina a escala acolhedora da arquitetura local com interiores luminosos, terraços e uma relação próxima com a paisagem.",
+    "highlights": [
+      "Envolvente atlântica",
+      "Terraço",
+      "Ambiente de aldeia"
+    ],
+    "specifications": [
+      { "label": "Localização", "value": "Azoia" },
+      { "label": "Concelho", "value": "Sintra" },
+      { "label": "Tipo", "value": "Moradia" },
+      { "label": "Disponibilidade", "value": "Sob consulta" }
+    ]
+  },
+  {
+    "id": "terreno-caldas-da-rainha",
+    "name": "Terreno nas Caldas",
+    "location": "Caldas da Rainha",
+    "region": "Leiria",
+    "typology": "Terreno com ruína",
+    "status": "Disponível",
+    "image": "/properties/terreno-caldas-da-rainha/vista-aerea-envolvente.webp",
+    "imageAlt": "Vista aérea do terreno com ruína e da paisagem rural nas Caldas da Rainha",
+    "images": [
+      {
+        "src": "/properties/terreno-caldas-da-rainha/vista-aerea-envolvente.webp",
+        "alt": "Vista aérea do terreno e da paisagem envolvente nas Caldas da Rainha"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/ruina-e-acesso.webp",
+        "alt": "Ruína existente vista a partir do acesso ao terreno"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/fachada-na-vegetacao.webp",
+        "alt": "Fachada da construção existente envolvida pela vegetação"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/interior-cobertura.webp",
+        "alt": "Interior amplo da ruína com estrutura de cobertura em madeira"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/estrutura-interior.webp",
+        "alt": "Estrutura interior e cobertura da construção existente"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/implantacao-e-arvores.webp",
+        "alt": "Construção existente implantada entre árvores maduras"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/janela-da-ruina.webp",
+        "alt": "Janela antiga da ruína coberta por vegetação"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/terreno-e-paisagem.webp",
+        "alt": "Área aberta do terreno com vista sobre a paisagem rural"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/paisagem-rural.webp",
+        "alt": "Paisagem rural e povoamento disperso na envolvente"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/vista-aerea-do-terreno.webp",
+        "alt": "Vista aérea aproximada da construção e do terreno"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/implantacao-aerea.webp",
+        "alt": "Vista vertical da implantação, árvores e terrenos vizinhos"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/arvores-no-terreno.webp",
+        "alt": "Árvores maduras e vegetação no interior da propriedade"
+      }
+    ],
+    "description": "Nas Caldas da Rainha, um terreno de caráter rural com construções em ruína, árvores maduras e uma relação aberta com a paisagem. Uma oportunidade para desenvolver um novo projeto, sujeito à análise e às aprovações urbanísticas aplicáveis.",
+    "highlights": [
+      "Ruína existente",
+      "Árvores maduras",
+      "Potencial de projeto"
+    ],
+    "specifications": [
+      { "label": "Localização", "value": "Caldas da Rainha" },
+      { "label": "Distrito", "value": "Leiria" },
+      { "label": "Tipo", "value": "Terreno com ruína" },
+      { "label": "Viabilidade", "value": "Sob consulta" }
+    ]
+  }
+]

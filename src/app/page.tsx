@@ -1,32 +1,434 @@
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
+import approachImage from "../../public/properties/casa-azoia/sala-escada.webp";
+import heroDesktopImage from "../../public/properties/casa-azoia/hero-architecture-desktop.webp";
+import heroMobileImage from "../../public/properties/casa-azoia/hero-architecture-mobile.webp";
 import { LandingIntro } from "@/components/landing-intro";
+import { SectionReveals } from "@/components/section-reveals";
+import { ScrollSidebar } from "@/components/scroll-sidebar";
+import propertiesData from "@/data/properties.json";
+import { getSiteUrl, siteConfig } from "@/lib/site-config";
+
+const siteUrl = getSiteUrl();
+const availablePropertiesCount = propertiesData.length;
+const availablePropertiesLabel =
+  availablePropertiesCount === 1
+    ? "propriedade disponível"
+    : "propriedades disponíveis";
+
+const principles = [
+  {
+    title: "Carácter, identidade e potencial",
+    copy: (
+      <>
+        Casas que são mais do que bens imobiliários:
+        <br className="pdf-line-break" /> lugares para viver, sentir e construir
+        uma história.
+      </>
+    ),
+  },
+  {
+    title: "Curadoria criteriosa",
+    copy: (
+      <>
+        Conhecer uma propriedade é muito mais do que
+        <br className="pdf-line-break" /> conhecer os seus metros quadrados.
+      </>
+    ),
+  },
+  {
+    title: "Real Estate e arquitectura",
+    copy: (
+      <>
+        Um conhecimento especializado que nos permite
+        <br className="pdf-line-break" /> selecionar e apresentar propriedades de
+        forma
+        <br className="pdf-line-break" /> mais criteriosa, revelando o seu
+        verdadeiro valor.
+      </>
+    ),
+  },
+];
+
+const contactChannels = [
+  {
+    number: "01",
+    label: "Rede fixa nacional",
+    value: "+351 219 231 385",
+    href: "tel:+351219231385",
+    accessibleLabel: "Ligar para a rede fixa nacional +351 219 231 385",
+  },
+  {
+    number: "02",
+    label: "Telemóvel",
+    value: "+351 960 169 569",
+    href: "tel:+351960169569",
+    accessibleLabel: "Ligar para o telemóvel +351 960 169 569",
+  },
+  {
+    number: "03",
+    label: "Email",
+    value: "geral@thebluehouse.pt",
+    href: "mailto:geral@thebluehouse.pt",
+    accessibleLabel: "Enviar email para geral@thebluehouse.pt",
+  },
+];
+
+const socialNetworks = [
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/thebluehouse.pt/",
+  },
+];
+
+function SectionTransition({
+  className,
+  reverse = false,
+}: {
+  className: string;
+  reverse?: boolean;
+}) {
+  return (
+    <div
+      className={`section-transition ${className}${reverse ? " is-reversed" : ""}`}
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
+        <path
+          className="transition-surface"
+          d="M0 74L1440 110V140H0Z"
+        />
+      </svg>
+    </div>
+  );
+}
+
+function HeroPicture() {
+  const {
+    props: { srcSet: desktopSrcSet },
+  } = getImageProps({
+    src: heroDesktopImage,
+    alt: "",
+    fill: true,
+    sizes: "100vw",
+    quality: 90,
+  });
+
+  return (
+    <picture className="hero-picture">
+      <source
+        media="(min-width: 64rem)"
+        srcSet={desktopSrcSet}
+        sizes="100vw"
+      />
+      <Image
+        src={heroMobileImage}
+        alt=""
+        fill
+        fetchPriority="high"
+        sizes="100vw"
+        quality={90}
+        className="hero-image"
+      />
+    </picture>
+  );
+}
 
 export default function Home() {
+  const websiteJsonLd = siteUrl
+    ? {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: siteConfig.name,
+        alternateName: siteConfig.legalName,
+        url: siteUrl.toString(),
+        inLanguage: siteConfig.language,
+      }
+    : undefined;
+
   return (
-    <main className="relative min-h-screen overflow-hidden bg-blue-house-500 px-6 text-blue-house-50">
+    <main className="site-shell">
+      {websiteJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
       <LandingIntro />
+      <SectionReveals />
+      <ScrollSidebar />
 
-      <Image
-        src="/brand/logo-reference.jpg"
-        alt="Blue House Exquisite Properties"
-        width={144}
-        height={144}
-        priority
-        className="docked-logo fixed left-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 object-cover sm:h-36 sm:w-36"
-      />
+      <section id="inicio" className="hero-section" aria-labelledby="hero-title">
+        <div className="hero-media" aria-hidden="true">
+          <HeroPicture />
+        </div>
+        <div className="hero-wash" aria-hidden="true" />
+        <div className="hero-grain" aria-hidden="true" />
+        <div className="hero-inner">
+          <a className="hero-brand" href="#inicio" aria-label="Blue House, início">
+            <Image
+              src="/brand/Logo-Quality.png"
+              alt="Blue House Exquisite Properties"
+              width={2000}
+              height={2000}
+              loading="eager"
+              sizes="(min-width: 1024px) 232px, (min-width: 768px) 208px, 176px"
+            />
+          </a>
 
-      <section className="landing-copy absolute left-1/2 top-1/2 w-full max-w-2xl px-6 text-center">
-        <p className="mb-3 text-[0.65rem] font-medium uppercase tracking-[0.35em] text-blue-house-200">
-          Novo website
-        </p>
-        <h1 className="text-2xl font-medium tracking-tight sm:text-3xl">
-          Estamos em construção.
-        </h1>
-        <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-blue-house-200 sm:text-base">
-          Estamos a preparar a nova casa digital da Blue House. Em breve,
-          teremos novidades para partilhar.
-        </p>
+          <div className="hero-copy">
+            <p className="eyebrow">The Blue House</p>
+            <h1 id="hero-title">
+              Exquisite Properties
+              <span>Extraordinary Places</span>
+            </h1>
+            <p className="hero-lead">
+              The Blue House - Exquisite Properties não é apenas uma marca. É uma
+              forma de olhar para o património, para a arquietura e para o acto de
+              escolher uma casa.
+            </p>
+            <a className="text-link text-link-light" href="#essencia">
+              <span>Conhecer a nossa visão</span>
+              <span className="link-line" aria-hidden="true" />
+            </a>
+          </div>
+
+          <a className="scroll-cue" href="#essencia">
+            <span>Explorar</span>
+            <span className="scroll-cue-line" aria-hidden="true" />
+          </a>
+        </div>
+
+        <SectionTransition className="transition-to-paper" />
       </section>
+
+      <section
+        id="essencia"
+        className="essence-section reveal-section"
+        aria-labelledby="essence-title"
+        data-reveal-section
+      >
+        <span className="section-monogram essence-monogram" aria-hidden="true">
+          BH
+        </span>
+        <div className="section-index" aria-hidden="true">
+          01
+        </div>
+
+        <div className="section-intro" data-reveal-group>
+          <p className="eyebrow eyebrow-dark">A nossa essência</p>
+          <h2 id="essence-title">
+            A essência que
+            <span>
+              começa na Casa e
+              <br /> abraça o <em>Mundo.</em>
+            </span>
+          </h2>
+          <p>
+            The Blue House nasce de uma ideia simples mas
+            <br className="pdf-line-break" /> profundamente simbólica: a nossa
+            primeira e maior
+            <br className="pdf-line-break" /> Casa é o planeta terra - esta grande
+            bola Azul.
+          </p>
+        </div>
+
+        <div className="principles-grid" data-reveal-group>
+          {principles.map((principle) => (
+            <article className="principle" key={principle.title}>
+              <div className="principle-heading" aria-hidden="true">
+                <span className="principle-rule" aria-hidden="true" />
+              </div>
+              <h3>{principle.title}</h3>
+              <p>{principle.copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <SectionTransition className="transition-to-deep-blue" reverse />
+      </section>
+
+      <section
+        id="abordagem"
+        className="approach-section reveal-section"
+        aria-labelledby="approach-title"
+        data-reveal-section
+      >
+        <div className="approach-image-wrap" data-reveal-group>
+          <Image
+            src={approachImage}
+            alt="Sala da Casa Azoia com escada artesanal em madeira"
+            fill
+            placeholder="blur"
+            sizes="(min-width: 900px) 58vw, 100vw"
+            quality={85}
+            className="approach-image"
+          />
+          <div className="approach-image-shade" aria-hidden="true" />
+          <span className="image-caption">Madeira · Luz · Matéria</span>
+        </div>
+
+        <div className="approach-copy" data-reveal-group>
+          <span className="section-number">02</span>
+          <p className="eyebrow">A abordagem</p>
+          <h2 id="approach-title">
+            Ver o espaço
+            <span>antes da propriedade.</span>
+          </h2>
+          <p>
+            Uma casa pode ser extrordinária pela arquitetura.
+            <br className="pdf-line-break" /> Única pela paisagem.
+            <br className="pdf-line-break" /> Valiosa pela história.
+            <br className="pdf-line-break" /> Mas torna-se verdadeiramente especial
+            quando passa
+            <br className="pdf-line-break" /> a fazer parte da historia de vida de
+            alguém.
+          </p>
+          <a className="text-link text-link-light" href="#propriedades">
+            <span>Continuar</span>
+            <span className="link-line" aria-hidden="true" />
+          </a>
+        </div>
+
+        <SectionTransition className="transition-to-soft-paper" />
+      </section>
+
+      <section
+        id="propriedades"
+        className="closing-section reveal-section"
+        aria-labelledby="closing-title"
+        data-reveal-section
+      >
+        <span className="section-monogram closing-monogram" aria-hidden="true">
+          BH
+        </span>
+        <div className="section-index" aria-hidden="true">
+          03
+        </div>
+
+        <div className="closing-content" data-reveal-group>
+          <p className="eyebrow eyebrow-dark">Propriedades</p>
+          <h2 id="closing-title">
+            Propriedades escolhidas
+            <span>
+              com <em>intenção.</em>
+            </span>
+          </h2>
+          <p>
+            Explore uma seleção cuidada de propriedades singulares, escolhidas
+            pela sua arquitetura, contexto e potencial.
+          </p>
+          <div className="closing-note">
+            <span>Propriedades</span>
+            <span className="closing-rule" aria-hidden="true" />
+            <span>
+              {String(availablePropertiesCount).padStart(2, "0")} ·{" "}
+              {availablePropertiesLabel}
+            </span>
+          </div>
+          <a className="text-link" href="/gallery">
+            <span>Ver propriedades</span>
+            <span className="link-line" aria-hidden="true" />
+          </a>
+        </div>
+
+        <SectionTransition className="transition-to-footer" reverse />
+      </section>
+
+      <footer
+        id="contacto"
+        className="site-footer reveal-section"
+        aria-labelledby="footer-title"
+        data-reveal-section
+      >
+        <div className="footer-inner">
+          <div className="footer-intro" data-reveal-group>
+            <div>
+              <p className="eyebrow">Contactos</p>
+              <h2 id="footer-title">
+                Fale connoso
+              </h2>
+            </div>
+            <p>
+              Duas linhas telefónicas e um email para um acompanhamento
+              próximo, reservado e atento a cada detalhe.
+            </p>
+          </div>
+
+          <div
+            className="footer-contacts"
+            aria-label="Contactos da empresa"
+            data-reveal-group
+          >
+            {contactChannels.map((contact) => (
+              <div className="footer-contact" key={contact.number}>
+                <div className="footer-contact-heading">
+                  <span>{contact.label}</span>
+                  <span aria-hidden="true">{contact.number}</span>
+                </div>
+                {contact.href ? (
+                  <a
+                    className="footer-contact-value"
+                    href={contact.href}
+                    aria-label={contact.accessibleLabel}
+                  >
+                    {contact.value}
+                  </a>
+                ) : (
+                  <span
+                    className="footer-contact-value"
+                    aria-label={contact.accessibleLabel}
+                  >
+                    {contact.value}
+                  </span>
+                )}
+                <span className="footer-contact-rule" aria-hidden="true" />
+              </div>
+            ))}
+          </div>
+
+          <div
+            className="footer-socials"
+            role="group"
+            aria-labelledby="footer-socials-title"
+            data-reveal-group
+          >
+            <span
+              id="footer-socials-title"
+              className="footer-socials-label"
+            >
+              Acompanhe a Blue House
+            </span>
+            <div className="footer-social-links">
+              {socialNetworks.map((network) => (
+                <a
+                  className="footer-social-link"
+                  href={network.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${network.name} da Blue House (abre num novo separador)`}
+                  key={network.name}
+                >
+                    <span>{network.name}</span>
+                    <span className="footer-social-arrow" aria-hidden="true">
+                      <svg viewBox="0 0 16 16">
+                        <path d="M4 12 12 4M6 4h6v6" />
+                      </svg>
+                    </span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <div className="footer-license">
+              <span>Licença AMI — Warrior Destiny Lda</span>
+              <span>AMI — 24716</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
