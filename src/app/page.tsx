@@ -17,16 +17,35 @@ const availablePropertiesLabel =
 
 const principles = [
   {
-    title: "Olhar de arquitetura",
-    copy: "Cada espaço é lido para além da sua forma — contexto, proporção e potencial fazem parte da mesma decisão.",
+    title: "Carácter, identidade e potencial",
+    copy: (
+      <>
+        Casas que são mais do que bens imobiliários:
+        <br className="pdf-line-break" /> lugares para viver, sentir e construir
+        uma história.
+      </>
+    ),
   },
   {
     title: "Curadoria criteriosa",
-    copy: "Um portefólio intencionalmente pequeno, onde a relevância de cada propriedade vale mais do que o volume.",
+    copy: (
+      <>
+        Conhecer uma propriedade é muito mais do que
+        <br className="pdf-line-break" /> conhecer os seus metros quadrados.
+      </>
+    ),
   },
   {
-    title: "Proximidade discreta",
-    copy: "Uma relação atenta, pessoal e reservada, construída ao ritmo de quem procura ou confia um lugar singular.",
+    title: "Real Estate e arquitectura",
+    copy: (
+      <>
+        Um conhecimento especializado que nos permite
+        <br className="pdf-line-break" /> selecionar e apresentar propriedades de
+        forma
+        <br className="pdf-line-break" /> mais criteriosa, revelando o seu
+        verdadeiro valor.
+      </>
+    ),
   },
 ];
 
@@ -159,14 +178,15 @@ export default function Home() {
           </a>
 
           <div className="hero-copy">
-            <p className="eyebrow">Arquitetura &amp; Imobiliário · Lisboa</p>
+            <p className="eyebrow">The Blue House</p>
             <h1 id="hero-title">
-              Espaços singulares.
-              <span>Escolhas com intenção.</span>
+              Exquisite Properties
+              <span>Extraordinary Places</span>
             </h1>
             <p className="hero-lead">
-              Uma abordagem próxima e criteriosa à mediação de propriedades
-              excecionais, informada por um olhar de arquitetura.
+              The Blue House - Exquisite Properties não é apenas uma marca. É uma
+              forma de olhar para o património, para a arquietura e para o acto de
+              escolher uma casa.
             </p>
             <a className="text-link text-link-light" href="#essencia">
               <span>Conhecer a nossa visão</span>
@@ -199,14 +219,18 @@ export default function Home() {
         <div className="section-intro" data-reveal-group>
           <p className="eyebrow eyebrow-dark">A nossa essência</p>
           <h2 id="essence-title">
-            Menos propriedades.
+            A essência que
             <span>
-              Mais <em>significado.</em>
+              começa na Casa e
+              <br /> abraça o <em>Mundo.</em>
             </span>
           </h2>
           <p>
-            A Blue House nasce do encontro entre arquitetura e imobiliário.
-            Selecionamos com rigor para acompanhar com tempo, clareza e atenção.
+            The Blue House nasce de uma ideia simples mas
+            <br className="pdf-line-break" /> profundamente simbólica: a nossa
+            primeira e maior
+            <br className="pdf-line-break" /> Casa é o planeta terra - esta grande
+            bola Azul.
           </p>
         </div>
 
@@ -253,9 +277,13 @@ export default function Home() {
             <span>antes da propriedade.</span>
           </h2>
           <p>
-            A leitura arquitetónica revela o que nem sempre é imediato: a
-            qualidade da luz, a relação com o lugar e a forma como um espaço
-            pode ser vivido.
+            Uma casa pode ser extrordinária pela arquitetura.
+            <br className="pdf-line-break" /> Única pela paisagem.
+            <br className="pdf-line-break" /> Valiosa pela história.
+            <br className="pdf-line-break" /> Mas torna-se verdadeiramente especial
+            quando passa
+            <br className="pdf-line-break" /> a fazer parte da historia de vida de
+            alguém.
           </p>
           <a className="text-link text-link-light" href="#propriedades">
             <span>Continuar</span>
@@ -280,12 +308,9 @@ export default function Home() {
         </div>
 
         <div className="closing-content" data-reveal-group>
-          <p className="eyebrow eyebrow-dark">
-            {String(availablePropertiesCount).padStart(2, "0")} ·{" "}
-            {availablePropertiesLabel}
-          </p>
+          <p className="eyebrow eyebrow-dark">Propriedades</p>
           <h2 id="closing-title">
-            Lugares escolhidos
+            Propriedades escolhidas
             <span>
               com <em>intenção.</em>
             </span>
@@ -322,8 +347,7 @@ export default function Home() {
             <div>
               <p className="eyebrow">Contactos</p>
               <h2 id="footer-title">
-                Comecemos
-                <span>uma conversa.</span>
+                Fale connoso
               </h2>
             </div>
             <p>

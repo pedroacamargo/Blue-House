@@ -223,6 +223,10 @@ a {
   display: block;
 }
 
+.pdf-line-break {
+  display: none;
+}
+
 .hero-copy h1 span {
   margin-left: 0.48em;
   font-style: italic;
@@ -437,7 +441,7 @@ a {
 .principle p {
   margin: 0.85rem 0 0;
   color: rgba(26, 36, 59, 0.66);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1.75;
 }
 
@@ -1400,6 +1404,14 @@ a {
     font-size: clamp(4.4rem, 5.5vw, 6.8rem);
   }
 
+  .section-intro h2 {
+    font-size: clamp(2.7rem, 4vw, 4.5rem);
+  }
+
+  .section-intro h2 span {
+    margin-left: 0;
+  }
+
   .principles-grid {
     grid-template-columns: 1fr;
     gap: 2.8rem;
@@ -1410,7 +1422,7 @@ a {
   .principle {
     display: grid;
     max-width: none;
-    grid-template-columns: 7rem minmax(0, 1fr);
+    grid-template-columns: 3.5rem minmax(0, 1fr);
     column-gap: 1.8rem;
   }
 
@@ -1421,7 +1433,7 @@ a {
 
   .principle h3 {
     margin-top: 0;
-    font-size: 1.75rem;
+    font-size: clamp(1.35rem, 1.6vw, 1.7rem);
   }
 
   .principle p {
@@ -1602,6 +1614,16 @@ a {
     transform: scale(1.025);
   }
 
+}
+
+@media (min-width: 80rem) {
+  .pdf-line-break {
+    display: initial;
+  }
+
+  .section-intro h2 {
+    font-size: clamp(4rem, 4.6vw, 5.2rem);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
