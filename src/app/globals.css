@@ -631,6 +631,13 @@ a {
   --transition-color: var(--blue-house-ink);
 }
 
+@media (max-width: 47.999rem) {
+  .transition-to-deep-blue,
+  .approach-section .image-caption {
+    display: none;
+  }
+}
+
 .site-footer {
   position: relative;
   min-height: 72vh;
@@ -1807,8 +1814,7 @@ a {
   text-shadow: 0 0.2rem 1rem rgba(12, 16, 27, 0.26);
 }
 
-.gallery-heading span,
-.gallery-count span:last-child {
+.gallery-heading span {
   display: block;
   color: rgba(245, 246, 248, 0.64);
   font-size: 0.44rem;
@@ -1824,28 +1830,6 @@ a {
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1;
-}
-
-.gallery-count {
-  position: absolute;
-  z-index: 12;
-  top: 1.2rem;
-  right: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  text-align: right;
-  text-shadow: 0 0.2rem 1rem rgba(12, 16, 27, 0.3);
-}
-
-.gallery-count span:first-child {
-  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-.gallery-count span:last-child {
-  max-width: 5.4rem;
 }
 
 .property-gallery,
@@ -2006,8 +1990,8 @@ a {
 .gallery-instruction {
   position: absolute;
   z-index: 11;
-  bottom: 0.8rem;
-  left: 50%;
+  top: 1.8rem;
+  right: 11rem;
   display: none;
   margin: 0;
   padding: 0.52rem 0.72rem;
@@ -2016,8 +2000,8 @@ a {
   font-size: 0.44rem;
   letter-spacing: 0.14em;
   line-height: 1;
+  text-align: right;
   text-transform: uppercase;
-  transform: translateX(-50%);
   transition: opacity 250ms ease;
   -webkit-backdrop-filter: blur(0.5rem);
   backdrop-filter: blur(0.5rem);
@@ -2451,14 +2435,12 @@ a {
 }
 
 .property-spec dd {
-  overflow: hidden;
   margin: 0.22rem 0 0;
   color: var(--blue-house-ink);
   font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
   font-size: 0.69rem;
-  line-height: 1.1;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 @keyframes gallery-card-settle {
@@ -2535,28 +2517,13 @@ a {
     padding-left: 1.35rem;
   }
 
-  .gallery-heading span,
-  .gallery-count span:last-child {
+  .gallery-heading span {
     font-size: 0.48rem;
   }
 
   .gallery-heading h1 {
     margin-top: 0;
     font-size: 1.55rem;
-  }
-
-  .gallery-count {
-    top: 1.8rem;
-    right: 11rem;
-    gap: 0.75rem;
-  }
-
-  .gallery-count span:first-child {
-    font-size: 1.35rem;
-  }
-
-  .gallery-count span:last-child {
-    max-width: none;
   }
 
   .gallery-grid {

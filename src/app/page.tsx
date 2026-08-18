@@ -20,7 +20,7 @@ const principles = [
     title: "Carácter, identidade e potencial",
     copy: (
       <>
-        Casas que são mais do que bens imobiliários:
+        Casas que são mais que bens imobiliários:
         <br className="pdf-line-break" /> lugares para viver, sentir e construir
         uma história.
       </>
@@ -30,13 +30,13 @@ const principles = [
     title: "Curadoria criteriosa",
     copy: (
       <>
-        Conhecer uma propriedade é muito mais do que
+        Conhecer uma propriedade é muito mais que
         <br className="pdf-line-break" /> conhecer os seus metros quadrados.
       </>
     ),
   },
   {
-    title: "Real Estate e arquitectura",
+    title: "Real Estate e Arquitectura",
     copy: (
       <>
         Um conhecimento especializado que nos permite
@@ -229,7 +229,7 @@ export default function Home() {
             The Blue House nasce de uma ideia simples mas
             <br className="pdf-line-break" /> profundamente simbólica: a nossa
             primeira e maior
-            <br className="pdf-line-break" /> Casa é o planeta terra - esta grande
+            <br className="pdf-line-break" /> Casa é o planeta Terra - esta grande
             bola Azul.
           </p>
         </div>

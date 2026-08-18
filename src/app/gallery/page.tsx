@@ -60,18 +60,6 @@ export default function GalleryPage() {
         </div>
       </header>
 
-      <div
-        className="gallery-count"
-        aria-label={`${properties.length} ${properties.length === 1 ? "propriedade disponível" : "propriedades disponíveis"}`}
-      >
-        <span>{String(properties.length).padStart(2, "0")}</span>
-        <span>
-          {properties.length === 1
-            ? "propriedade disponível"
-            : "propriedades disponíveis"}
-        </span>
-      </div>
-
       <PropertyGallery properties={properties} />
       <ScrollSidebar />
     </main>

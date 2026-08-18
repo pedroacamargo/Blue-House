@@ -76,7 +76,7 @@
     "name": "Terreno nas Caldas",
     "location": "Caldas da Rainha",
     "region": "Leiria",
-    "typology": "Terreno com ruína",
+    "typology": "Terreno com ruína do séc. XVIII para reabilitação com projeto aprovado",
     "status": "Disponível",
     "image": "/properties/terreno-caldas-da-rainha/vista-aerea-envolvente.webp",
     "imageAlt": "Vista aérea do terreno com ruína e da paisagem rural nas Caldas da Rainha",
@@ -139,7 +139,7 @@
     "specifications": [
       { "label": "Localização", "value": "Caldas da Rainha" },
       { "label": "Distrito", "value": "Leiria" },
-      { "label": "Tipo", "value": "Terreno com ruína" },
+      { "label": "Tipo", "value": "Terreno com ruína do séc. XVIII para reabilitação com projeto aprovado" },
       { "label": "Viabilidade", "value": "Sob consulta" }
     ]
   }

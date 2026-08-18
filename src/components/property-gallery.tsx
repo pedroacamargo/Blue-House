@@ -328,11 +328,11 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
         })}
       </div>
 
-      <p className="gallery-instruction" aria-live="polite">
+      {/* <p className="gallery-instruction" aria-live="polite">
         {activeProperty
           ? `${activeProperty.name} selecionada · Esc para fechar`
-          : "Selecione um imóvel para descobrir os detalhes"}
-      </p>
+          : "Selecione um imóvel para descobrir detalhes"}
+      </p> */}
     </div>
   );
 }
