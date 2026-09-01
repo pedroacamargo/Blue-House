@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Blue House Exquisite Properties — Arquitetura e imobiliário em Lisboa";
+  "Blue House Exquisite Properties — Arquitetura e imobiliário de luxo em Portugal";
 export const size = {
   width: 1200,
   height: 630,

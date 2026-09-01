@@ -18,12 +18,22 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.legalName,
+  authors: [{ name: siteConfig.legalName }],
   creator: siteConfig.legalName,
   publisher: siteConfig.legalName,
   category: "Imobiliário",
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    address: false,
+    email: false,
+    telephone: false,
+  },
   alternates: siteUrl
     ? {
         canonical: "/",
+        languages: {
+          "pt-PT": "/",
+        },
       }
     : undefined,
   openGraph: {

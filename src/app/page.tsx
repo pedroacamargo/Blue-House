@@ -134,24 +134,69 @@ function HeroPicture() {
 }
 
 export default function Home() {
-  const websiteJsonLd = siteUrl
+  const homeJsonLd = siteUrl
     ? {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: siteConfig.name,
-        alternateName: siteConfig.legalName,
-        url: siteUrl.toString(),
-        inLanguage: siteConfig.language,
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": new URL("/#website", siteUrl).toString(),
+            url: siteUrl.toString(),
+            name: siteConfig.name,
+            alternateName: siteConfig.legalName,
+            description: siteConfig.description,
+            inLanguage: siteConfig.language,
+            publisher: {
+              "@id": new URL("/#organization", siteUrl).toString(),
+            },
+          },
+          {
+            "@type": ["Organization", "RealEstateAgent"],
+            "@id": new URL("/#organization", siteUrl).toString(),
+            name: siteConfig.legalName,
+            alternateName: siteConfig.name,
+            url: siteUrl.toString(),
+            logo: new URL("/brand/Logo-Quality.png", siteUrl).toString(),
+            image: new URL(
+              "/properties/casa-azoia/hero-architecture-desktop.webp",
+              siteUrl,
+            ).toString(),
+            description: siteConfig.description,
+            email: siteConfig.email,
+            telephone: siteConfig.phone,
+            contactPoint: [
+              {
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                telephone: siteConfig.phone,
+                email: siteConfig.email,
+                availableLanguage: "Portuguese",
+              },
+              {
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                telephone: siteConfig.mobile,
+                email: siteConfig.email,
+                availableLanguage: "Portuguese",
+              },
+            ],
+            areaServed: {
+              "@type": "Country",
+              name: "Portugal",
+            },
+            sameAs: [siteConfig.instagram],
+          },
+        ],
       }
     : undefined;
 
   return (
     <main className="site-shell">
-      {websiteJsonLd && (
+      {homeJsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(websiteJsonLd).replace(/</g, "\\u003c"),
+            __html: JSON.stringify(homeJsonLd).replace(/</g, "\\u003c"),
           }}
         />
       )}

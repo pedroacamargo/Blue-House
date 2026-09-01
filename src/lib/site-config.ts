@@ -1,11 +1,15 @@
 export const siteConfig = {
   name: "Blue House",
   legalName: "Blue House Exquisite Properties",
-  title: "Blue House | Imobiliário de Luxo em Lisboa",
+  title: "Blue House | Imobiliário de Luxo em Portugal",
   description:
-    "Arquitetura e mediação imobiliária de propriedades de luxo selecionadas em Lisboa, Cascais, Sintra e Comporta, com acompanhamento próximo e discreto.",
+    "Propriedades singulares em Portugal, selecionadas pela Blue House com conhecimento de arquitetura, acompanhamento próximo e mediação imobiliária discreta.",
   locale: "pt_PT",
   language: "pt-PT",
+  email: "geral@thebluehouse.pt",
+  phone: "+351 219 231 385",
+  mobile: "+351 960 169 569",
+  instagram: "https://www.instagram.com/thebluehouse.pt/",
 } as const;
 
 export function getSiteUrl(): URL | undefined {

@@ -15,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl("/"),
       changeFrequency: "monthly",
       priority: 1,
+      alternates: {
+        languages: {
+          "pt-PT": absoluteUrl("/"),
+        },
+      },
       images: [
         absoluteUrl(
           "/properties/casa-azoia/hero-architecture-desktop.webp",
@@ -25,6 +30,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: absoluteUrl("/gallery"),
       changeFrequency: "weekly",
       priority: 0.9,
+      alternates: {
+        languages: {
+          "pt-PT": absoluteUrl("/gallery"),
+        },
+      },
       images: propertiesData.flatMap(({ images }) =>
         images.map(({ src }) => absoluteUrl(src)),
       ),
