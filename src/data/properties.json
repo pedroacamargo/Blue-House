@@ -4,7 +4,7 @@
     "name": "Casa Azoia",
     "location": "Azoia",
     "region": "Sintra",
-    "typology": "Moradia",
+    "typology": "Moradia T2",
     "status": "Disponível",
     "image": "/properties/casa-azoia/fachada-entardecer.webp",
     "imageAlt": "Fachada da Casa Azoia ao entardecer, entre a serra e o Atlântico",
@@ -58,25 +58,28 @@
         "alt": "Vista aérea da costa atlântica próxima da Azoia"
       }
     ],
-    "description": "Entre a serra e o Atlântico, a Casa Azoia combina a escala acolhedora da arquitetura local com interiores luminosos, terraços e uma relação próxima com a paisagem.",
+    "description": "Na Azoia, onde a serra de Sintra encontra o Atlântico, esta moradia T2 distribui 110 m² de construção por uma implantação de 55 m². A madeira, a pedra e os tons claros dão calor aos interiores, enquanto o terraço abre a casa à paisagem e ao horizonte do Cabo da Roca.",
     "highlights": [
-      "Envolvente atlântica",
-      "Terraço",
-      "Ambiente de aldeia"
+      "Horizonte do Cabo da Roca",
+      "Terraço de 20 m²",
+      "Materiais naturais"
     ],
     "specifications": [
       { "label": "Localização", "value": "Azoia" },
       { "label": "Concelho", "value": "Sintra" },
-      { "label": "Tipo", "value": "Moradia" },
+      { "label": "Tipologia", "value": "T2" },
+      { "label": "Área de construção", "value": "110 m²" },
+      { "label": "Área de implantação", "value": "55 m²" },
+      { "label": "Certificado energético", "value": "F" },
       { "label": "Disponibilidade", "value": "Sob consulta" }
     ]
   },
   {
     "id": "terreno-caldas-da-rainha",
-    "name": "Terreno nas Caldas",
-    "location": "Caldas da Rainha",
-    "region": "Leiria",
-    "typology": "Terreno com ruína do séc. XVIII para reabilitação com projeto aprovado",
+    "name": "Quinta do Pego",
+    "location": "Pego",
+    "region": "Caldas da Rainha",
+    "typology": "Quinta com projeto aprovado",
     "status": "Disponível",
     "image": "/properties/terreno-caldas-da-rainha/vista-aerea-envolvente.webp",
     "imageAlt": "Vista aérea do terreno com ruína e da paisagem rural nas Caldas da Rainha",
@@ -130,17 +133,20 @@
         "alt": "Árvores maduras e vegetação no interior da propriedade"
       }
     ],
-    "description": "Nas Caldas da Rainha, um terreno de caráter rural com construções em ruína, árvores maduras e uma relação aberta com a paisagem. Uma oportunidade para desenvolver um novo projeto, sujeito à análise e às aprovações urbanísticas aplicáveis.",
+    "description": "No Pego, nas Caldas da Rainha, esta quinta com 7.973 m² reúne paisagem rural, árvores maduras e ruínas marcadas por uma inscrição de 1775. O projeto de reabilitação e ampliação está aprovado, com 518,95 m² de área de implantação e licença a pagamento — uma oportunidade singular de conciliar património, arquitetura contemporânea e natureza.",
     "highlights": [
-      "Ruína existente",
-      "Árvores maduras",
-      "Potencial de projeto"
+      "Projeto aprovado",
+      "Inscrição datada de 1775",
+      "7.973 m² de terreno"
     ],
     "specifications": [
-      { "label": "Localização", "value": "Caldas da Rainha" },
-      { "label": "Distrito", "value": "Leiria" },
-      { "label": "Tipo", "value": "Terreno com ruína do séc. XVIII para reabilitação com projeto aprovado" },
-      { "label": "Viabilidade", "value": "Sob consulta" }
+      { "label": "Localização", "value": "Pego" },
+      { "label": "Concelho", "value": "Caldas da Rainha" },
+      { "label": "Tipo", "value": "Quinta com ruína para reabilitação" },
+      { "label": "Área do lote", "value": "7.973 m²" },
+      { "label": "Área de implantação", "value": "518,95 m²" },
+      { "label": "Projeto", "value": "Aprovado" },
+      { "label": "Licença", "value": "A pagamento" }
     ]
   }
 ]
