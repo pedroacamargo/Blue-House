@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import { getLocale } from "@/lib/get-locale";
+import { getTranslations } from "@/lib/i18n";
 import { getSiteUrl, siteConfig } from "@/lib/site-config";
 import "./globals.css";
 
@@ -10,61 +12,68 @@ const geistSans = Geist({
 
 const siteUrl = getSiteUrl();
 
-export const metadata: Metadata = {
-  metadataBase: siteUrl,
-  title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  applicationName: siteConfig.legalName,
-  creator: siteConfig.legalName,
-  publisher: siteConfig.legalName,
-  category: "Imobiliário",
-  alternates: siteUrl
-    ? {
-        canonical: "/",
-      }
-    : undefined,
-  openGraph: {
-    type: "website",
-    locale: siteConfig.locale,
-    siteName: siteConfig.name,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    url: siteUrl,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const { meta } = getTranslations(locale);
+
+  return {
+    metadataBase: siteUrl,
+    title: {
+      default: meta.title,
+      template: `%s | ${siteConfig.name}`,
+    },
+    description: meta.description,
+    applicationName: siteConfig.legalName,
+    creator: siteConfig.legalName,
+    publisher: siteConfig.legalName,
+    category: meta.category,
+    alternates: siteUrl
+      ? {
+          canonical: "/",
+        }
+      : undefined,
+    openGraph: {
+      type: "website",
+      locale: locale.replace("-", "_"),
+      siteName: siteConfig.name,
+      title: meta.title,
+      description: meta.description,
+      url: siteUrl,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
     },
-  },
-};
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#30416c",
   colorScheme: "dark",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
     <html
-      lang="pt-PT"
+      lang={locale}
       className={`${geistSans.variable} h-full antialiased`}
       data-scroll-behavior="smooth"
     >

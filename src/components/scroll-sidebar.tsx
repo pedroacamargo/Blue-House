@@ -4,16 +4,28 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
+import { LanguageSwitcher } from "@/components/language-switcher";
+import type { Locale, Translation } from "@/lib/i18n";
 
-const sections = [
-  { id: "inicio", number: "01", label: "Início" },
-  { id: "essencia", number: "02", label: "Essência" },
-  { id: "abordagem", number: "03", label: "Abordagem" },
-  { id: "propriedades", number: "04", label: "Propriedades" },
-  { id: "contacto", number: "05", label: "Contactos" },
-];
+const sectionIds = [
+  "inicio",
+  "essencia",
+  "abordagem",
+  "propriedades",
+  "contacto",
+] as const;
 
-export function ScrollSidebar() {
+type ScrollSidebarProps = {
+  locale: Locale;
+  navigation: Translation["navigation"];
+  language: Translation["language"];
+};
+
+export function ScrollSidebar({
+  locale,
+  navigation,
+  language,
+}: ScrollSidebarProps) {
   const pathname = usePathname();
   const isGallery = pathname.startsWith("/gallery");
   const [activeSection, setActiveSection] = useState("inicio");
@@ -28,9 +40,9 @@ export function ScrollSidebar() {
 
     const updateActiveSection = () => {
       const focusLine = window.innerHeight * 0.48;
-      let nextSection = sections[0].id;
+      let nextSection: (typeof sectionIds)[number] = sectionIds[0];
 
-      sections.forEach(({ id }) => {
+      sectionIds.forEach((id) => {
         const section = document.getElementById(id);
 
         if (!section) return;
@@ -93,7 +105,7 @@ export function ScrollSidebar() {
 
   const activeIndex = isGallery
     ? 0
-    : sections.findIndex(({ id }) => id === activeSection) + 1;
+    : sectionIds.findIndex((id) => id === activeSection) + 1;
   const navigationStyle = {
     "--dot-top":
       dotTop === null
@@ -102,64 +114,71 @@ export function ScrollSidebar() {
   } as CSSProperties;
 
   return (
-    <aside
-      className="scroll-sidebar"
-      aria-label="Navegação da página"
-    >
-      <nav
-        ref={navigationRef}
-        className={`sidebar-navigation${isGallery ? " is-gallery-active" : ""}`}
-        style={navigationStyle}
-      >
-        <span className="sidebar-active-dot" aria-hidden="true" />
-
-        <Link
-          ref={(link) => {
-            linkRefs.current.gallery = link;
-          }}
-          href="/gallery"
-          className={`sidebar-gallery-link${isGallery ? " is-active" : ""}`}
-          aria-current={isGallery ? "page" : undefined}
+    <>
+      <aside className="scroll-sidebar" aria-label={navigation.label}>
+        <nav
+          ref={navigationRef}
+          className={`sidebar-navigation${isGallery ? " is-gallery-active" : ""}`}
+          style={navigationStyle}
         >
-          <span className="sidebar-gallery-copy">
-            <strong>Galeria</strong>
-          </span>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4 17V5a2 2 0 0 1 2-2h12" />
-            <rect x="7" y="6" width="14" height="15" rx="2" />
-            <circle cx="16.5" cy="10.5" r="1.5" />
-            <path d="m8 18 4-4 2.5 2.5 2-2L20 18" />
-          </svg>
-        </Link>
+          <span className="sidebar-active-dot" aria-hidden="true" />
 
-        <span className="sidebar-gallery-divider" aria-hidden="true" />
-
-        {sections.map((section) => (
           <Link
             ref={(link) => {
-              linkRefs.current[section.id] = link;
+              linkRefs.current.gallery = link;
             }}
-            key={section.id}
-            href={isGallery ? `/#${section.id}` : `#${section.id}`}
-            onClick={() => setActiveSection(section.id)}
-            className={
-              !isGallery && activeSection === section.id
-                ? "is-active"
-                : undefined
-            }
-            aria-current={
-              !isGallery && activeSection === section.id
-                ? "location"
-                : undefined
-            }
+            href="/gallery"
+            className={`sidebar-gallery-link${isGallery ? " is-active" : ""}`}
+            aria-current={isGallery ? "page" : undefined}
           >
-            <span className="sidebar-link-label">{section.label}</span>
-            <span className="sidebar-link-number" aria-hidden="true">
-              {section.number}
+            <span className="sidebar-gallery-copy">
+              <strong>{navigation.gallery}</strong>
             </span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 17V5a2 2 0 0 1 2-2h12" />
+              <rect x="7" y="6" width="14" height="15" rx="2" />
+              <circle cx="16.5" cy="10.5" r="1.5" />
+              <path d="m8 18 4-4 2.5 2.5 2-2L20 18" />
+            </svg>
           </Link>
-        ))}
-      </nav>
-    </aside>
+
+          <span className="sidebar-gallery-divider" aria-hidden="true" />
+
+          {sectionIds.map((sectionId, index) => (
+            <Link
+              ref={(link) => {
+                linkRefs.current[sectionId] = link;
+              }}
+              key={sectionId}
+              href={isGallery ? `/#${sectionId}` : `#${sectionId}`}
+              onClick={() => setActiveSection(sectionId)}
+              className={
+                !isGallery && activeSection === sectionId
+                  ? "is-active"
+                  : undefined
+              }
+              aria-current={
+                !isGallery && activeSection === sectionId
+                  ? "location"
+                  : undefined
+              }
+            >
+              <span className="sidebar-link-label">
+                {navigation.sections[index]}
+              </span>
+              <span className="sidebar-link-number" aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </Link>
+          ))}
+        </nav>
+        <LanguageSwitcher
+          locale={locale}
+          copy={language}
+          placement="sidebar"
+        />
+      </aside>
+      <LanguageSwitcher locale={locale} copy={language} placement="mobile" />
+    </>
   );
 }

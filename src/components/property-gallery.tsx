@@ -3,6 +3,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { useEffect, useMemo, useState } from "react";
+import type { Translation } from "@/lib/i18n";
 
 export type Property = {
   id: string;
@@ -27,9 +28,10 @@ export type Property = {
 
 type PropertyGalleryProps = {
   properties: Property[];
+  copy: Translation["gallery"];
 };
 
-export function PropertyGallery({ properties }: PropertyGalleryProps) {
+export function PropertyGallery({ properties, copy }: PropertyGalleryProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isDetailHidden, setIsDetailHidden] = useState(false);
@@ -91,7 +93,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
       className={`property-gallery${activeProperty ? " is-expanded" : ""}`}
       style={galleryStyle}
     >
-      <div className="gallery-grid" aria-label="Imóveis disponíveis">
+      <div className="gallery-grid" aria-label={copy.availableProperties}>
         {properties.map((property, index) => {
           const isSelected = property.id === activeId;
           const displayedImage = isSelected
@@ -133,8 +135,8 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                 }
                 aria-label={
                   isSelected
-                    ? `${property.name}, detalhes apresentados`
-                    : `Conhecer ${property.name}, ${property.location}`
+                    ? `${property.name}, ${copy.selectedDetails}`
+                    : `${copy.discover} ${property.name}, ${property.location}`
                 }
               >
                 <Image
@@ -164,7 +166,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                   <strong>{property.name}</strong>
                   <span className="property-card-meta">
                     <span>{property.typology}</span>
-                    <span>Explorar</span>
+                    <span>{copy.explore}</span>
                   </span>
                 </span>
               </button>
@@ -179,9 +181,9 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                       setActiveImageIndex(0);
                       setIsDetailHidden(false);
                     }}
-                    aria-label={`Fechar detalhes de ${property.name}`}
+                    aria-label={`${copy.closeDetails} ${property.name}`}
                   >
-                    <span>Fechar</span>
+                    <span>{copy.close}</span>
                     <svg viewBox="0 0 16 16" aria-hidden="true">
                       <path d="m4 4 8 8M12 4l-8 8" />
                     </svg>
@@ -198,8 +200,8 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                       onClick={() => setIsDetailHidden((isHidden) => !isHidden)}
                       aria-label={
                         isDetailHidden
-                          ? "Mostrar informações da propriedade"
-                          : "Esconder informações da propriedade"
+                          ? copy.showInformation
+                          : copy.hideInformation
                       }
                       aria-expanded={!isDetailHidden}
                       aria-controls={`property-detail-${property.id}`}
@@ -212,7 +214,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                     <section
                       className="property-detail"
                       id={`property-detail-${property.id}`}
-                      aria-label={`Informações de ${property.name}`}
+                      aria-label={`${copy.information} ${property.name}`}
                       aria-hidden={isDetailHidden}
                       aria-live="polite"
                       inert={isDetailHidden}
@@ -227,7 +229,10 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                         <p className="property-detail-description">
                           {property.description}
                         </p>
-                        <ul className="property-highlights" aria-label="Destaques">
+                        <ul
+                          className="property-highlights"
+                          aria-label={copy.highlights}
+                        >
                           {property.highlights.map((highlight) => (
                             <li key={highlight}>{highlight}</li>
                           ))}
@@ -250,10 +255,10 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
 
                   <div
                     className="property-photo-navigation"
-                    aria-label={`Fotografias de ${property.name}`}
+                    aria-label={`${copy.photographs} ${copy.of} ${property.name}`}
                   >
                     <div className="property-photo-navigation-heading">
-                      <span>Fotografias</span>
+                      <span>{copy.photographs}</span>
                       <span aria-live="polite">
                         {String(activeImageIndex + 1).padStart(2, "0")} /{" "}
                         {String(property.images.length).padStart(2, "0")}
@@ -270,7 +275,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                               setIsDetailHidden(true);
                             }
                           }}
-                          aria-label={`Mostrar fotografia ${photoIndex + 1} de ${property.images.length}`}
+                          aria-label={`${copy.showPhotograph} ${photoIndex + 1} ${copy.of} ${property.images.length}`}
                           aria-pressed={photoIndex === activeImageIndex}
                           key={photo.src}
                         >
@@ -288,7 +293,11 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                     </div>
                   </div>
 
-                  <div className="property-photo-controls">
+                  <div
+                    className={`property-photo-controls${
+                      isDetailHidden ? "" : " is-above-detail"
+                    }`}
+                  >
                     <button
                       className="property-photo-step"
                       type="button"
@@ -299,7 +308,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                         );
                         setIsDetailHidden(true);
                       }}
-                      aria-label="Fotografia anterior"
+                      aria-label={copy.previousPhotograph}
                     >
                       <svg viewBox="0 0 20 20" aria-hidden="true">
                         <path d="m12.5 4.5-5 5.5 5 5.5" />
@@ -314,7 +323,7 @@ export function PropertyGallery({ properties }: PropertyGalleryProps) {
                         );
                         setIsDetailHidden(true);
                       }}
-                      aria-label="Fotografia seguinte"
+                      aria-label={copy.nextPhotograph}
                     >
                       <svg viewBox="0 0 20 20" aria-hidden="true">
                         <path d="m7.5 4.5 5 5.5-5 5.5" />

@@ -1,0 +1,152 @@
+[
+  {
+    "id": "casa-azoia",
+    "name": "Casa Azoia",
+    "location": "Azoia",
+    "region": "Sintra",
+    "typology": "Two-bedroom house",
+    "status": "Available",
+    "image": "/properties/casa-azoia/fachada-entardecer.webp",
+    "imageAlt": "Casa Azoia's façade at dusk, between the Sintra hills and the Atlantic",
+    "images": [
+      {
+        "src": "/properties/casa-azoia/fachada-entardecer.webp",
+        "alt": "Casa Azoia's main façade at dusk"
+      },
+      {
+        "src": "/properties/casa-azoia/fachada-paisagem.webp",
+        "alt": "Casa Azoia seen from the surrounding landscape"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-escada.webp",
+        "alt": "Casa Azoia living room with handcrafted staircase and timber beams"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-panoramica.webp",
+        "alt": "Wide view of Casa Azoia's living, dining and kitchen areas"
+      },
+      {
+        "src": "/properties/casa-azoia/sala-lareira-ampla.webp",
+        "alt": "Casa Azoia living room with fireplace, timber ceiling and natural light"
+      },
+      {
+        "src": "/properties/casa-azoia/escada-detalhe.webp",
+        "alt": "Detail of Casa Azoia's handcrafted wooden staircase"
+      },
+      {
+        "src": "/properties/casa-azoia/cozinha.webp",
+        "alt": "Casa Azoia's white kitchen and dining area"
+      },
+      {
+        "src": "/properties/casa-azoia/quarto-terraco.webp",
+        "alt": "Bright bedroom at Casa Azoia with access to the terrace"
+      },
+      {
+        "src": "/properties/casa-azoia/casa-de-banho-azul.webp",
+        "alt": "Casa Azoia bathroom with deep blue finishes"
+      },
+      {
+        "src": "/properties/casa-azoia/terraco-diurno.webp",
+        "alt": "Casa Azoia terrace overlooking the village surroundings"
+      },
+      {
+        "src": "/properties/casa-azoia/detalhe-luz.webp",
+        "alt": "Golden light and geometric shadows outside Casa Azoia"
+      },
+      {
+        "src": "/properties/casa-azoia/costa-atlantica.webp",
+        "alt": "Aerial view of the Atlantic coast near Azoia"
+      }
+    ],
+    "description": "In Azoia, where the Sintra hills meet the Atlantic, this two-bedroom home offers 110 m² of floor area across a 55 m² footprint. Timber, stone and light tones bring warmth to the interiors, while the terrace opens the house to the landscape and the Cabo da Roca horizon.",
+    "highlights": [
+      "Cabo da Roca horizon",
+      "20 m² terrace",
+      "Natural materials"
+    ],
+    "specifications": [
+      { "label": "Location", "value": "Azoia" },
+      { "label": "Municipality", "value": "Sintra" },
+      { "label": "Bedrooms", "value": "2" },
+      { "label": "Floor area", "value": "110 m²" },
+      { "label": "Building footprint", "value": "55 m²" },
+      { "label": "Energy rating", "value": "F" },
+      { "label": "Availability", "value": "Price on application" }
+    ]
+  },
+  {
+    "id": "terreno-caldas-da-rainha",
+    "name": "Quinta do Pego",
+    "location": "Pego",
+    "region": "Caldas da Rainha",
+    "typology": "Country estate with approved plans",
+    "status": "Available",
+    "image": "/properties/terreno-caldas-da-rainha/vista-aerea-envolvente.webp",
+    "imageAlt": "Aerial view of the land, ruins and rural landscape in Caldas da Rainha",
+    "images": [
+      {
+        "src": "/properties/terreno-caldas-da-rainha/vista-aerea-envolvente.webp",
+        "alt": "Aerial view of the land and surrounding countryside in Caldas da Rainha"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/ruina-e-acesso.webp",
+        "alt": "Existing ruins seen from the entrance to the property"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/fachada-na-vegetacao.webp",
+        "alt": "Façade of the existing building surrounded by vegetation"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/interior-cobertura.webp",
+        "alt": "Spacious interior of the ruins with a timber roof structure"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/estrutura-interior.webp",
+        "alt": "Interior structure and roof of the existing building"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/implantacao-e-arvores.webp",
+        "alt": "Existing building set among mature trees"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/janela-da-ruina.webp",
+        "alt": "Old window in the ruins covered by vegetation"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/terreno-e-paisagem.webp",
+        "alt": "Open area of the land overlooking the rural landscape"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/paisagem-rural.webp",
+        "alt": "Rural landscape and scattered settlement in the surrounding area"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/vista-aerea-do-terreno.webp",
+        "alt": "Closer aerial view of the building and land"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/implantacao-aerea.webp",
+        "alt": "Top-down view of the building footprint, trees and neighbouring plots"
+      },
+      {
+        "src": "/properties/terreno-caldas-da-rainha/arvores-no-terreno.webp",
+        "alt": "Mature trees and vegetation within the property"
+      }
+    ],
+    "description": "In Pego, Caldas da Rainha, this 7,973 m² country estate brings together a rural landscape, mature trees and ruins bearing an inscription from 1775. Plans for restoration and extension have been approved, with a 518.95 m² building footprint and the licence ready for payment — a rare opportunity to unite heritage, contemporary architecture and nature.",
+    "highlights": [
+      "Approved plans",
+      "Inscription dated 1775",
+      "7,973 m² plot"
+    ],
+    "specifications": [
+      { "label": "Location", "value": "Pego" },
+      { "label": "Municipality", "value": "Caldas da Rainha" },
+      { "label": "Type", "value": "Country estate with ruins for restoration" },
+      { "label": "Plot area", "value": "7,973 m²" },
+      { "label": "Building footprint", "value": "518.95 m²" },
+      { "label": "Plans", "value": "Approved" },
+      { "label": "Licence", "value": "Ready for payment" }
+    ]
+  }
+]

@@ -3,39 +3,48 @@ import Image from "next/image";
 import Link from "next/link";
 import { PropertyGallery, type Property } from "@/components/property-gallery";
 import { ScrollSidebar } from "@/components/scroll-sidebar";
+import propertiesEnglishData from "@/data/properties.en-GB.json";
 import propertiesData from "@/data/properties.json";
+import { getLocale } from "@/lib/get-locale";
+import { getTranslations } from "@/lib/i18n";
 import { getSiteUrl, siteConfig } from "@/lib/site-config";
 
 const siteUrl = getSiteUrl();
-const galleryTitle = "Propriedades selecionadas";
-const galleryDescription =
-  "Conheça as propriedades selecionadas pela Blue House em Portugal.";
 
-export const metadata: Metadata = {
-  title: galleryTitle,
-  description: galleryDescription,
-  alternates: siteUrl
-    ? {
-        canonical: "/gallery",
-      }
-    : undefined,
-  openGraph: {
-    type: "website",
-    locale: siteConfig.locale,
-    siteName: siteConfig.name,
-    title: `${galleryTitle} | ${siteConfig.name}`,
-    description: galleryDescription,
-    url: siteUrl ? new URL("/gallery", siteUrl) : undefined,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${galleryTitle} | ${siteConfig.name}`,
-    description: galleryDescription,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const { meta } = getTranslations(locale);
 
-export default function GalleryPage() {
-  const properties = propertiesData as Property[];
+  return {
+    title: meta.galleryTitle,
+    description: meta.galleryDescription,
+    alternates: siteUrl
+      ? {
+          canonical: "/gallery",
+        }
+      : undefined,
+    openGraph: {
+      type: "website",
+      locale: locale.replace("-", "_"),
+      siteName: siteConfig.name,
+      title: `${meta.galleryTitle} | ${siteConfig.name}`,
+      description: meta.galleryDescription,
+      url: siteUrl ? new URL("/gallery", siteUrl) : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${meta.galleryTitle} | ${siteConfig.name}`,
+      description: meta.galleryDescription,
+    },
+  };
+}
+
+export default async function GalleryPage() {
+  const locale = await getLocale();
+  const translation = getTranslations(locale);
+  const properties = (locale === "en-GB"
+    ? propertiesEnglishData
+    : propertiesData) as Property[];
 
   return (
     <main className="gallery-page">
@@ -43,7 +52,7 @@ export default function GalleryPage() {
         <Link
           className="gallery-brand"
           href="/"
-          aria-label="Blue House, regressar ao início"
+          aria-label={translation.gallery.backHome}
         >
           <Image
             src="/brand/Logo-Quality.png"
@@ -56,12 +65,16 @@ export default function GalleryPage() {
         </Link>
 
         <div className="gallery-heading">
-          <h1>Propriedades</h1>
+          <h1>{translation.gallery.title}</h1>
         </div>
       </header>
 
-      <PropertyGallery properties={properties} />
-      <ScrollSidebar />
+      <PropertyGallery properties={properties} copy={translation.gallery} />
+      <ScrollSidebar
+        locale={locale}
+        navigation={translation.navigation}
+        language={translation.language}
+      />
     </main>
   );
 }

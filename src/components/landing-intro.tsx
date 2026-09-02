@@ -3,7 +3,15 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export function LandingIntro() {
+type LandingIntroProps = {
+  loadingWebsiteLabel: string;
+  loadingLabel: string;
+};
+
+export function LandingIntro({
+  loadingWebsiteLabel,
+  loadingLabel,
+}: LandingIntroProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [isRunning, setIsRunning] = useState(false);
 
@@ -44,7 +52,7 @@ export function LandingIntro() {
     <div
       className={`landing-intro${isRunning ? " is-running" : ""}`}
       role="status"
-      aria-label="A carregar o website da Blue House"
+      aria-label={loadingWebsiteLabel}
     >
       <div className="intro-content">
         <div className="intro-mark">
@@ -72,7 +80,7 @@ export function LandingIntro() {
           />
         </div>
       </div>
-      <span className="sr-only">A carregar…</span>
+      <span className="sr-only">{loadingLabel}</span>
     </div>
   );
 }

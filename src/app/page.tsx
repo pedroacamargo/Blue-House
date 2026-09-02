@@ -6,70 +6,28 @@ import { LandingIntro } from "@/components/landing-intro";
 import { SectionReveals } from "@/components/section-reveals";
 import { ScrollSidebar } from "@/components/scroll-sidebar";
 import propertiesData from "@/data/properties.json";
+import { getLocale } from "@/lib/get-locale";
+import { getTranslations } from "@/lib/i18n";
 import { getSiteUrl, siteConfig } from "@/lib/site-config";
 
 const siteUrl = getSiteUrl();
 const availablePropertiesCount = propertiesData.length;
-const availablePropertiesLabel =
-  availablePropertiesCount === 1
-    ? "propriedade disponível"
-    : "propriedades disponíveis";
-
-const principles = [
-  {
-    title: "Carácter, identidade e potencial",
-    copy: (
-      <>
-        Casas que são mais que bens imobiliários:
-        <br className="pdf-line-break" /> lugares para viver, sentir e construir
-        uma história.
-      </>
-    ),
-  },
-  {
-    title: "Curadoria criteriosa",
-    copy: (
-      <>
-        Conhecer uma propriedade é muito mais que
-        <br className="pdf-line-break" /> conhecer os seus metros quadrados.
-      </>
-    ),
-  },
-  {
-    title: "Real Estate e Arquitectura",
-    copy: (
-      <>
-        Um conhecimento especializado que nos permite
-        <br className="pdf-line-break" /> selecionar e apresentar propriedades de
-        forma
-        <br className="pdf-line-break" /> mais criteriosa, revelando o seu
-        verdadeiro valor.
-      </>
-    ),
-  },
-];
 
 const contactChannels = [
   {
     number: "01",
-    label: "Rede fixa nacional",
     value: "+351 219 231 385",
     href: "tel:+351219231385",
-    accessibleLabel: "Ligar para a rede fixa nacional +351 219 231 385",
   },
   {
     number: "02",
-    label: "Telemóvel",
     value: "+351 960 169 569",
     href: "tel:+351960169569",
-    accessibleLabel: "Ligar para o telemóvel +351 960 169 569",
   },
   {
     number: "03",
-    label: "Email",
     value: "geral@thebluehouse.pt",
     href: "mailto:geral@thebluehouse.pt",
-    accessibleLabel: "Enviar email para geral@thebluehouse.pt",
   },
 ];
 
@@ -133,7 +91,23 @@ function HeroPicture() {
   );
 }
 
-export default function Home() {
+function TextLines({ lines }: { lines: readonly string[] }) {
+  return lines.map((line, index) => (
+    <span key={line}>
+      {index > 0 && <br className="pdf-line-break" />}
+      {line}
+    </span>
+  ));
+}
+
+export default async function Home() {
+  const locale = await getLocale();
+  const translation = getTranslations(locale);
+  const { home } = translation;
+  const availablePropertiesLabel =
+    availablePropertiesCount === 1
+      ? home.properties.availableSingular
+      : home.properties.availablePlural;
   const websiteJsonLd = siteUrl
     ? {
         "@context": "https://schema.org",
@@ -141,7 +115,7 @@ export default function Home() {
         name: siteConfig.name,
         alternateName: siteConfig.legalName,
         url: siteUrl.toString(),
-        inLanguage: siteConfig.language,
+        inLanguage: locale,
       }
     : undefined;
 
@@ -155,9 +129,16 @@ export default function Home() {
           }}
         />
       )}
-      <LandingIntro />
+      <LandingIntro
+        loadingWebsiteLabel={translation.intro.loadingWebsite}
+        loadingLabel={translation.intro.loading}
+      />
       <SectionReveals />
-      <ScrollSidebar />
+      <ScrollSidebar
+        locale={locale}
+        navigation={translation.navigation}
+        language={translation.language}
+      />
 
       <section id="inicio" className="hero-section" aria-labelledby="hero-title">
         <div className="hero-media" aria-hidden="true">
@@ -166,7 +147,11 @@ export default function Home() {
         <div className="hero-wash" aria-hidden="true" />
         <div className="hero-grain" aria-hidden="true" />
         <div className="hero-inner">
-          <a className="hero-brand" href="#inicio" aria-label="Blue House, início">
+          <a
+            className="hero-brand"
+            href="#inicio"
+            aria-label={home.hero.brandLabel}
+          >
             <Image
               src="/brand/Logo-Quality.png"
               alt="Blue House Exquisite Properties"
@@ -180,22 +165,18 @@ export default function Home() {
           <div className="hero-copy">
             <p className="eyebrow">The Blue House</p>
             <h1 id="hero-title">
-              Exquisite Properties
-              <span>Extraordinary Places</span>
+              {home.hero.title}
+              <span>{home.hero.subtitle}</span>
             </h1>
-            <p className="hero-lead">
-              The Blue House - Exquisite Properties não é apenas uma marca. É uma
-              forma de olhar para o património, para a arquietura e para o acto de
-              escolher uma casa.
-            </p>
+            <p className="hero-lead">{home.hero.lead}</p>
             <a className="text-link text-link-light" href="#essencia">
-              <span>Conhecer a nossa visão</span>
+              <span>{home.hero.vision}</span>
               <span className="link-line" aria-hidden="true" />
             </a>
           </div>
 
           <a className="scroll-cue" href="#essencia">
-            <span>Explorar</span>
+            <span>{home.hero.explore}</span>
             <span className="scroll-cue-line" aria-hidden="true" />
           </a>
         </div>
@@ -217,31 +198,26 @@ export default function Home() {
         </div>
 
         <div className="section-intro" data-reveal-group>
-          <p className="eyebrow eyebrow-dark">A nossa essência</p>
+          <p className="eyebrow eyebrow-dark">{home.essence.eyebrow}</p>
           <h2 id="essence-title">
-            A essência que
+            {home.essence.title}
             <span>
-              começa na Casa e
-              <br /> abraça o <em>Mundo.</em>
+              {home.essence.titleMiddle}
+              <br /> {home.essence.titleConnector}
+              <em>{home.essence.titleEnd}</em>
             </span>
           </h2>
-          <p>
-            The Blue House nasce de uma ideia simples mas
-            <br className="pdf-line-break" /> profundamente simbólica: a nossa
-            primeira e maior
-            <br className="pdf-line-break" /> Casa é o planeta Terra - esta grande
-            bola Azul.
-          </p>
+          <p><TextLines lines={home.essence.body} /></p>
         </div>
 
         <div className="principles-grid" data-reveal-group>
-          {principles.map((principle) => (
+          {home.essence.principles.map((principle) => (
             <article className="principle" key={principle.title}>
               <div className="principle-heading" aria-hidden="true">
                 <span className="principle-rule" aria-hidden="true" />
               </div>
               <h3>{principle.title}</h3>
-              <p>{principle.copy}</p>
+              <p><TextLines lines={principle.copy} /></p>
             </article>
           ))}
         </div>
@@ -258,7 +234,7 @@ export default function Home() {
         <div className="approach-image-wrap" data-reveal-group>
           <Image
             src={approachImage}
-            alt="Sala da Casa Azoia com escada artesanal em madeira"
+            alt={home.approach.imageAlt}
             fill
             placeholder="blur"
             sizes="(min-width: 900px) 58vw, 100vw"
@@ -266,27 +242,19 @@ export default function Home() {
             className="approach-image"
           />
           <div className="approach-image-shade" aria-hidden="true" />
-          <span className="image-caption">Madeira · Luz · Matéria</span>
+          <span className="image-caption">{home.approach.imageCaption}</span>
         </div>
 
         <div className="approach-copy" data-reveal-group>
           <span className="section-number">02</span>
-          <p className="eyebrow">A abordagem</p>
+          <p className="eyebrow">{home.approach.eyebrow}</p>
           <h2 id="approach-title">
-            Ver o espaço
-            <span>antes da propriedade.</span>
+            {home.approach.title}
+            <span>{home.approach.subtitle}</span>
           </h2>
-          <p>
-            Uma casa pode ser extrordinária pela arquitetura.
-            <br className="pdf-line-break" /> Única pela paisagem.
-            <br className="pdf-line-break" /> Valiosa pela história.
-            <br className="pdf-line-break" /> Mas torna-se verdadeiramente especial
-            quando passa
-            <br className="pdf-line-break" /> a fazer parte da historia de vida de
-            alguém.
-          </p>
+          <p><TextLines lines={home.approach.body} /></p>
           <a className="text-link text-link-light" href="#propriedades">
-            <span>Continuar</span>
+            <span>{home.approach.continue}</span>
             <span className="link-line" aria-hidden="true" />
           </a>
         </div>
@@ -308,19 +276,16 @@ export default function Home() {
         </div>
 
         <div className="closing-content" data-reveal-group>
-          <p className="eyebrow eyebrow-dark">Propriedades</p>
+          <p className="eyebrow eyebrow-dark">{home.properties.eyebrow}</p>
           <h2 id="closing-title">
-            Propriedades escolhidas
+            {home.properties.title}
             <span>
-              com <em>intenção.</em>
+              {home.properties.titlePrefix} <em>{home.properties.titleEmphasis}</em>
             </span>
           </h2>
-          <p>
-            Explore uma seleção cuidada de propriedades singulares, escolhidas
-            pela sua arquitetura, contexto e potencial.
-          </p>
+          <p>{home.properties.body}</p>
           <div className="closing-note">
-            <span>Propriedades</span>
+            <span>{home.properties.label}</span>
             <span className="closing-rule" aria-hidden="true" />
             <span>
               {String(availablePropertiesCount).padStart(2, "0")} ·{" "}
@@ -328,7 +293,7 @@ export default function Home() {
             </span>
           </div>
           <a className="text-link" href="/gallery">
-            <span>Ver propriedades</span>
+            <span>{home.properties.view}</span>
             <span className="link-line" aria-hidden="true" />
           </a>
         </div>
@@ -345,40 +310,35 @@ export default function Home() {
         <div className="footer-inner">
           <div className="footer-intro" data-reveal-group>
             <div>
-              <p className="eyebrow">Contactos</p>
-              <h2 id="footer-title">
-                Fale connoso
-              </h2>
+              <p className="eyebrow">{home.footer.eyebrow}</p>
+              <h2 id="footer-title">{home.footer.title}</h2>
             </div>
-            <p>
-              Duas linhas telefónicas e um email para um acompanhamento
-              próximo, reservado e atento a cada detalhe.
-            </p>
+            <p>{home.footer.body}</p>
           </div>
 
           <div
             className="footer-contacts"
-            aria-label="Contactos da empresa"
+            aria-label={home.footer.contactsLabel}
             data-reveal-group
           >
-            {contactChannels.map((contact) => (
+            {contactChannels.map((contact, index) => (
               <div className="footer-contact" key={contact.number}>
                 <div className="footer-contact-heading">
-                  <span>{contact.label}</span>
+                  <span>{home.footer.contacts[index].label}</span>
                   <span aria-hidden="true">{contact.number}</span>
                 </div>
                 {contact.href ? (
                   <a
                     className="footer-contact-value"
                     href={contact.href}
-                    aria-label={contact.accessibleLabel}
+                    aria-label={home.footer.contacts[index].accessibleLabel}
                   >
                     {contact.value}
                   </a>
                 ) : (
                   <span
                     className="footer-contact-value"
-                    aria-label={contact.accessibleLabel}
+                    aria-label={home.footer.contacts[index].accessibleLabel}
                   >
                     {contact.value}
                   </span>
@@ -398,7 +358,7 @@ export default function Home() {
               id="footer-socials-title"
               className="footer-socials-label"
             >
-              Acompanhe a Blue House
+              {home.footer.follow}
             </span>
             <div className="footer-social-links">
               {socialNetworks.map((network) => (
@@ -407,7 +367,7 @@ export default function Home() {
                   href={network.href}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`${network.name} da Blue House (abre num novo separador)`}
+                  aria-label={home.footer.socialLabel}
                   key={network.name}
                 >
                     <span>{network.name}</span>
@@ -423,7 +383,7 @@ export default function Home() {
 
           <div className="footer-bottom">
             <div className="footer-license">
-              <span>Licença AMI — Warrior Destiny Lda</span>
+              <span>{home.footer.licence}</span>
               <span>AMI — 24716</span>
             </div>
           </div>
