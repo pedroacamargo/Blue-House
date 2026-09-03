@@ -384,7 +384,7 @@ export default async function Home() {
           <div className="footer-bottom">
             <div className="footer-license">
               <span>{home.footer.licence}</span>
-              <span>AMI — 24716</span>
+              <span>AMI - 24716</span>
             </div>
           </div>
         </div>

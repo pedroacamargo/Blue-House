@@ -41,7 +41,7 @@ export const translations = {
         title: "Exquisite Properties",
         subtitle: "Extraordinary Places",
         lead:
-          "The Blue House — Exquisite Properties não é apenas uma marca. É uma forma de olhar para o património, para a arquitetura e para o ato de escolher uma casa.",
+          "The Blue House Exquisite Properties não é apenas uma marca. É uma forma de olhar para o património, para a arquitetura e para o ato de escolher uma casa.",
         vision: "Conhecer a nossa visão",
         explore: "Explorar",
       },
@@ -54,7 +54,7 @@ export const translations = {
         body: [
           "The Blue House nasce de uma ideia simples mas",
           "profundamente simbólica: a nossa primeira e maior",
-          "Casa é o planeta Terra — esta grande bola Azul.",
+          "Casa é o planeta Terra, esta grande bola Azul.",
         ],
         principles: [
           {
@@ -130,7 +130,7 @@ export const translations = {
         ],
         follow: "Acompanhe a Blue House",
         socialLabel: "Instagram da Blue House (abre num novo separador)",
-        licence: "Licença AMI — Warrior Destiny Lda",
+        licence: "Licença AMI - Warrior Destiny Lda",
       },
     },
     gallery: {
@@ -184,7 +184,7 @@ export const translations = {
         title: "Exquisite Properties",
         subtitle: "Extraordinary Places",
         lead:
-          "The Blue House — Exquisite Properties is more than a brand. It is a way of looking at heritage, architecture and the act of choosing a home.",
+          "The Blue House Exquisite Properties is more than a brand. It is a way of looking at heritage, architecture and the act of choosing a home.",
         vision: "Discover our vision",
         explore: "Explore",
       },
@@ -197,7 +197,7 @@ export const translations = {
         body: [
           "The Blue House was born from a simple yet deeply",
           "symbolic idea: our first and greatest Home is planet",
-          "Earth — this great Blue sphere.",
+          "Earth, this great Blue sphere.",
         ],
         principles: [
           {
@@ -273,7 +273,7 @@ export const translations = {
         ],
         follow: "Follow Blue House",
         socialLabel: "Blue House on Instagram (opens in a new tab)",
-        licence: "AMI Licence — Warrior Destiny Lda",
+        licence: "AMI Licence - Warrior Destiny Lda",
       },
     },
     gallery: {

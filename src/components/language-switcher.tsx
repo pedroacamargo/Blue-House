@@ -7,13 +7,11 @@ import type { Locale, Translation } from "@/lib/i18n";
 type LanguageSwitcherProps = {
   locale: Locale;
   copy: Translation["language"];
-  placement: "sidebar" | "mobile";
 };
 
 export function LanguageSwitcher({
   locale,
   copy,
-  placement,
 }: LanguageSwitcherProps) {
   const [isPending, startTransition] = useTransition();
 
@@ -28,15 +26,12 @@ export function LanguageSwitcher({
 
   return (
     <div
-      className={`language-switcher ${placement}-language-switcher${
+      className={`language-switcher floating-language-switcher${
         isPending ? " is-pending" : ""
       }`}
       role="group"
       aria-label={copy.selectorLabel}
     >
-      {placement === "sidebar" && (
-        <span className="language-switcher-label">{copy.label}</span>
-      )}
       <div className="language-switcher-options">
         <button
           type="button"

@@ -172,13 +172,8 @@ export function ScrollSidebar({
             </Link>
           ))}
         </nav>
-        <LanguageSwitcher
-          locale={locale}
-          copy={language}
-          placement="sidebar"
-        />
       </aside>
-      <LanguageSwitcher locale={locale} copy={language} placement="mobile" />
+      {!isGallery && <LanguageSwitcher locale={locale} copy={language} />}
     </>
   );
 }
